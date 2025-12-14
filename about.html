@@ -109,8 +109,13 @@
 
           <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:8px;">
             <a href="https://example.com" target="_blank" class="full-bubble-link">slides</a>
-            <a href="https://example.com" target="_blank" class="full-bubble-link">notes</a>
-            <a href="https://example.com" target="_blank" class="full-bubble-link">kahoot</a>
+            <a href="/files/slides_W01.pdf" 
+            onclick="gtag('event', 'download', {
+              'event_category': 'about',
+              'event_label': 'TEST_ABOUT_ME_BUTTON'
+            });"
+            class="full-bubble-link">TEST_ABOUT_ME_BUTTON</a>
+            
           </div>
         </div>
       </div>
