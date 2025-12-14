@@ -6,388 +6,74 @@
   <title>Janick Matter</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fafafa;
-      color: #333;
-      line-height: 1.6;
-      font-weight: 300;
-    }
+    /* Base styles */
+    body { font-family: 'Inter', sans-serif; background:#fafafa; color:#333; line-height:1.6; font-weight:300; }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      padding: 24px 0;
-      background-color: #f6f6f4;
-      font-size: 0.95rem;
-    }
+    nav { display:flex; justify-content:center; gap:32px; padding:24px 0; background:#f6f6f4; font-size:0.95rem; }
+    nav a { text-decoration:none; color:#333; padding:6px 16px; border-radius:9999px; transition:background .18s; position:relative; }
+    nav a::after { content:'→'; opacity:0; margin-left:8px; transition:opacity .2s; }
+    nav a:hover::after { opacity:1; }
+    nav a:hover { background:#e5e5e5; }
 
-    nav a {
-      text-decoration: none;
-      color: #333;
-      padding: 6px 16px;
-      border-radius: 9999px;
-      transition: background 0.2s;
-      position: relative;
-    }
+    .hero { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:80px 20px; min-height:220px; background:#fefefe; }
+    .hero h1 { font-size:clamp(1.5rem,4vw,3.2rem); font-weight:300; color:#222; }
 
-    nav a::after {
-      content: '→';
-      opacity: 0;
-      margin-left: 8px;
-      transition: opacity 0.3s;
-    }
+    .blog-section { max-width:1000px; margin:60px auto; padding:0 20px; }
 
-    nav a:hover::after {
-      opacity: 1;
-    }
+    .blog-entry { display:flex; align-items:flex-start; margin-bottom:60px; position:relative; z-index:1; }
 
-    nav a:hover {
-      background-color: #e5e5e5;
-    }
+    .blog-bubble { background:#fff; border-radius:16px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.04); transition:box-shadow .25s; flex-grow:1; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .blog-bubble:hover { box-shadow:0 4px 14px rgba(0,0,0,0.08); }
+    .blog-bubble h3 { margin-bottom:8px; font-size:1.2rem; font-weight:400; }
+    .blog-bubble p { font-size:.95rem; color:#444; }
+    .blog-bubble h3, .blog-bubble p, .blog-image { grid-column:1 / -1; }
+    .blog-bubble br { display:none; }
 
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 20px;
-      min-height: 220px;
-      background-color: #fefefe;
-    }
+    .blog-image { margin-top:15px; border-radius:12px; overflow:hidden; }
+    .blog-image img { width:100%; display:block; border-radius:12px; }
 
-    .hero h1 {
-      font-size: clamp(1.5rem, 4vw, 3.2rem);
-      font-weight: 300;
-      color: #222;
-    }
+    .blog-bubble.image-bubble { padding:0; overflow:hidden; background:transparent; box-shadow:none; border-radius:0; }
+    .blog-bubble.image-bubble .blog-image { margin-top:0; }
+    .blog-bubble.image-bubble .blog-image img { border-radius:12px; width:100%; display:block; }
+    .blog-bubble.content-bubble { display:flex; flex-direction:column; align-items:center; text-align:center; }
+    .blog-bubble.content-bubble .full-bubble-link { width:auto; display:inline-flex; margin:8px 6px 0; }
 
-    .hero strong {
-      font-weight: 400;
-      color: #2d1b10;
-    }
+    .full-bubble-link { display:flex; align-items:center; justify-content:flex-start; width:100%; box-sizing:border-box; margin-top:12px; text-decoration:none; color:#333; padding:8px 16px; border-radius:20px; min-height:36px; background:#f0f0f0; transition:background .18s; font-size:.95rem; }
+    .full-bubble-link::after { content:'→'; display:inline-block; margin-left:auto; opacity:0; transition:opacity .18s, transform .18s; }
+    .full-bubble-link:hover { background:#e5e5e5; }
+    .full-bubble-link:hover::after { opacity:1; transform:translateX(4px); }
 
-    .blog-section {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
+    .summary-grid { grid-column:1 / -1; display:grid; grid-template-columns:repeat(3,minmax(220px,1fr)); gap:20px; align-items:start; }
+    .summary-grid .blog-entry { margin-bottom:0; }
+    .summary-grid .blog-bubble { width:100%; }
+    @media (max-width:900px) { .summary-grid { grid-template-columns:repeat(2,minmax(180px,1fr)); } }
+    @media (max-width:520px) { .summary-grid { grid-template-columns:1fr; } }
 
-    .blog-entry {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 60px;
-    }
+    .mobile-toggle { display:none; position:fixed; right:12px; top:84px; background:#fff; border:1px solid #eee; padding:8px 12px; border-radius:9999px; box-shadow:0 6px 18px rgba(0,0,0,0.06); z-index:1200; font-size:.9rem; color:#333; }
+    @media (max-width:760px) { .mobile-toggle { display:inline-flex; align-items:center; gap:8px; } }
 
-    .blog-date {
-      font-size: 0.8rem;
-      color: #777;
-      margin-right: 30px;
-      flex-shrink: 0;
-      padding-top: 6px;
-      background: #f0f0f0;
-      padding: 6px 12px;
-      border-radius: 20px;
-    }
+    .hide-weekly .weekly-entry .blog-date { display:none !important; }
 
-    .blog-bubble {
-      background-color: #fff;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: box-shadow 0.3s;
-      flex-grow: 1;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+    .sep-full-text { width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); padding:12px 0; display:flex; justify-content:center; background:transparent; }
+    .sep-full-text .sep-text { font-size:.95rem; color:#666; background:none; padding:4px 8px; }
 
-    .blog-bubble:hover {
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-    }
+    @media (max-width:520px) { .hero { padding:46px 16px; min-height:140px; } .sep-full-text { padding:10px 0; } }
 
-    .blog-bubble h3 {
-      margin-bottom: 8px;
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
-
-    .blog-bubble p {
-      font-size: 0.95rem;
-      color: #444;
-    }
-
-    .blog-bubble h3,
-    .blog-bubble p,
-    .blog-image {
-      grid-column: 1 / -1;
-    }
-
-    .blog-bubble br { display: none; }
-
-    .blog-image {
-      margin-top: 15px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .blog-image img {
-      width: 100%;
-      display: block;
-      border-radius: 12px;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.8rem;
-      color: #888;
-      padding: 40px 20px;
-      background-color: #f6f6f4;
-    }
-
-        .blog-link {
-      margin-left: 20px;
-      padding-top: 6px;
-      flex-shrink: 0;
-    }
-
-    .blog-link a {
-      display: inline-block;
-      padding: 6px 16px;
-      border-radius: 9999px;
-      text-decoration: none;
-      color: #333;
-      background-color: #f0f0f0;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-      position: relative;
-    }
-
-    .blog-link a::after {
-      content: '→';
-      opacity: 0;
-      margin-left: 8px;
-      transition: opacity 0.3s;
-    }
-
-    .blog-link a:hover::after {
-      opacity: 1;
-    }
-
-    .blog-link a:hover {
-      background-color: #e0e0e0;
-    }
-
-        .blog-date-link {
-      display: inline-block;
-      margin-top: 6px;
-      font-size: 0.8rem;
-      color: #333;
-      background-color: #eaeaea;
-      padding: 4px 12px;
-      border-radius: 9999px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .blog-date-link::after {
-      content: '→';
-      opacity: 0;
-      margin-left: 6px;
-      transition: opacity 0.3s;
-    }
-
-    .blog-date-link:hover::after {
-      opacity: 1;
-    }
-
-    .blog-date-link:hover {
-      background-color: #dcdcdc;
-    }
-
-    <!---->
-
-    .full-bubble-link {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      width: 100%;
-      box-sizing: border-box;
-      margin-top: 12px;
-      text-decoration: none;
-      color: #333;
-      padding: 8px 16px;
-      border-radius: 20px;
-      min-height: 36px;
-      background-color: #f0f0f0;
-      transition: background 0.18s ease;
-      font-size: 0.95rem;
-    }
-
-    .full-bubble-link::after {
-      content: '→';
-      display: inline-block;
-      margin-left: auto;
-      opacity: 0;
-      transition: opacity 0.2s, transform 0.18s;
-    }
-
-    .full-bubble-link:hover { background-color: #e5e5e5; }
-
-    .full-bubble-link:hover::after {
-      opacity: 1;
-      transform: translateX(4px);
-    }
-
-    /* --- Radical variants placed OUTSIDE the white blog-bubble --- */
-    .slides-variants { margin: 18px 0 36px; display: grid; gap: 16px; }
-
-    /* Variant 1: Full-width muted strip with large action tiles */
-    .variant-strip {
-      background: #f4f4f4;
-      padding: 14px;
-      border-radius: 14px;
-      display: flex;
-      gap: 12px;
-      align-items: stretch;
-    }
-    .variant-strip .tile {
-      flex: 1 1 0;
-      background: linear-gradient(180deg,#fff,#fbfbfb);
-      border-radius: 12px;
-      padding: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      display:flex; align-items:center; justify-content:space-between; text-decoration:none; color:#222;
-    }
-
-    /* Variant 2: Floating tiles grid (cards outside white bubble) */
-    .variant-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .variant-tiles .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      text-decoration: none;
-      color: #222;
-      display:flex; flex-direction:column; gap:8px;
-    }
-
-    /* Variant 3: Compact list with separators (flat, minimal) */
-    .variant-compact { background: transparent; border-radius: 8px; overflow: hidden; }
-    .variant-compact a { display:flex; justify-content:space-between; padding:10px 12px; text-decoration:none; color:#222; background:#fff; border-bottom:1px solid #f1f1f1; }
-    .variant-compact a:last-child { border-bottom:none; }
-
-    /* Variant 4: Timeline/stacked summary (left labels, right actions) */
-    .variant-timeline { display:flex; flex-direction:column; gap:10px; }
-    .variant-timeline .row { display:flex; gap:12px; align-items:center; }
-    .variant-timeline .badge { background:#f0f0f0; padding:6px 10px; border-radius:9999px; font-size:0.85rem; }
-
-    /* Preserve mobile friendliness: stack columns on narrow screens */
-    @media (max-width:760px) {
-      .variant-tiles { grid-template-columns: repeat(2, 1fr); }
-      .variant-strip { flex-direction: column; }
-      .variant-tiles .card, .variant-strip .tile { width:100%; }
-    }
-
-    /* --- More presentation variants for the whole 'slides' block --- */
-    /* Variants A–D: visual alternatives to the weekly white bubble */
-    .variants { grid-column: 1 / -1; margin-top: 14px; }
-    .variants h4 { margin: 12px 0 8px; font-size: 1rem; font-weight: 400; color: #333; }
-
-    /* Variant A — Flat chips row (no white container behind chips) */
-    .variant-a { display: flex; gap: 10px; }
-    .variant-a .chip {
-      flex: 1;
-      padding: 10px 12px;
-      background: #f0f0f0;
-      border-radius: 9999px;
-      text-decoration: none;
-      color: #222;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Variant B — Card grid (small cards inside the white bubble) */
-    .variant-b { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .variant-b .card {
-      padding: 12px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
-      text-decoration: none;
-      color: #222;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* Variant C — Compact list (muted, table-like) */
-    .variant-c ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-    .variant-c a { display: block; padding: 8px 12px; text-decoration: none; color: #222; border-radius: 8px; background: transparent; border: 1px solid #f0f0f0; }
-
-    /* Variant D — Minimal accordion for bundles */
-    .variant-d details { background: transparent; }
-    .variant-d summary { padding: 10px 12px; border-radius: 12px; background: #f7f7f7; cursor: pointer; }
-
-    /* Section layout: left caption + right content (keeps the caption outside any white bubble) */
-    .slides-section { display: grid; grid-template-columns: 100px 1fr; gap: 14px; align-items:start; grid-column: 1 / -1; }
-    .slides-label { color: #666; font-size: 0.95rem; display:flex; align-items:flex-start; padding-top:6px; }
-
-    @media (max-width:760px) {
-      .slides-section { grid-template-columns: 1fr; }
-      .slides-label { padding-bottom:6px; }
-    }
-
-    /* Reduce hero size on small screens so first bubble stays visible */
-    @media (max-width:520px) {
-      .hero { padding: 46px 16px; min-height: 140px; }
-    }
-
-    /* Make sure the slides block clears and doesn't overlap following entries */
-    .slides-section { margin-bottom: 34px; position: relative; z-index: 0; }
-    .slides-section + .blog-entry { margin-top: 22px; }
-    .blog-entry { position: relative; z-index: 1; }
-
-    /* Caption style variants (choose one by adding the class to .slides-label) */
-    .caption-plain { color: #666; font-weight: 300; }
-    .caption-strong { color: #333; font-weight: 500; }
-    .caption-pill { background:#f0f0f0; padding:6px 10px; border-radius:9999px; color:#444; display:inline-block; }
-    .caption-accent { color:#2d1b10; font-weight:500; }
-    .caption-icon { display:flex; gap:8px; align-items:center; }
-
-    .caption-examples { grid-column: 1 / -1; margin-top: 8px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-    .caption-examples .label-sample { font-size:0.95rem; color:#444; }
-
-    /* Summary grid: place several small blog-entry cards in a 3-column row */
-    .summary-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 20px; align-items: start; }
-    .summary-grid .blog-entry { margin-bottom: 0; }
-    .summary-grid .blog-bubble { width: 100%; }
-    @media (max-width: 900px) {
-      .summary-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
-    }
-    @media (max-width: 520px) {
-      .summary-grid { grid-template-columns: 1fr; }
-    }
-
-
+    footer { text-align:center; font-size:.8rem; color:#888; padding:40px 20px; background:#f6f6f4; }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="#about">NUS2</a>
-    <a href="#about">Linalg</a>
-    <a href="#about">About</a>
+    <a href="/index.html">NUS2</a>
+    <a href="/LA.html">Linalg</a>
+    <a href="/about.html">About</a>
   </nav>
+
+  <!-- Mobile preview toggle: tap on phones to hide/show the small 'weekly' bubble -->
+  <button class="mobile-toggle" id="weeklyToggle" aria-pressed="false">Hide weekly</button>
 
   <div class="hero">
     <h1>Netzwerke und Schaltungen 2 <span style="color:#777"></span></h1>
@@ -397,55 +83,37 @@
 
   <section class="blog-section" id="diary">
     <div class="blog-entry weekly-entry">
-      <div class="blog-date">weekly</div>
-      <div class="blog-bubble">
-        <h3>quiz image</h3>
-        <p>will be used for weekly kahoot bonus questions</p>
-        <div class="blog-image">
-          <img src="/images/shootings/DSC02817.jpg" alt="Mosaic Grid Sample" />
+      
+      <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
+        <div class="blog-bubble image-bubble">
+          <div class="blog-image">
+            <img src="/images/shootings/DSC02817.jpg" alt="Mosaic Grid Sample" />
+          </div>
         </div>
-        <p></p>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">notes</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">kahoot</a>
+
+        <div class="blog-bubble content-bubble">
+          <h3>quiz image</h3>
+          <p>will be used for weekly kahoot bonus questions</p>
+
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:8px;">
+            <a href="https://example.com" target="_blank" class="full-bubble-link">slides</a>
+            <a href="https://example.com" target="_blank" class="full-bubble-link">notes</a>
+            <a href="https://example.com" target="_blank" class="full-bubble-link">kahoot</a>
+          </div>
+        </div>
       </div>
     </div>
 
-
-    <!--
 
     
-    <div class="blog-entry">
-      <div class="blog-date">slides</div>
-      <div class="blog-bubble">
-        <h3>Adjusted slides of all weeks</h3>
-        <p>insert a description of a project which was conducted.</p>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W01</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W02</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W03</a><br>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W01</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W02</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W03</a><br>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W01</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W02</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W03</a><br>
-      </div>
-    </div>
 
 
-    -->
+
+
+    
+
+      <div class="sep-full-text" aria-hidden="true"><div class="sep-text">Alles auf einen Blick<br><br><br></div></div>
    
-      <!-- Variant 2: Floating cards grid 
-      <div class="variant-tiles">
-        <a class="card" href="#"><div style="font-weight:500">Weeks 1–5</div><div style="opacity:0.75">→</div></a>
-        <a class="card" href="#"><div style="font-weight:500">Weeks 6–10</div><div style="opacity:0.75">→</div></a>
-        <a class="card" href="#"><div style="font-weight:500">Weeks 11–15</div><div style="opacity:0.75">→</div></a>
-      </div>
-
-     -->
-
-
-
 
     <div class="summary-grid">
       <div class="blog-entry">
@@ -550,87 +218,7 @@
         </div>
       </div>
 
-    </div>
-<!--
-    <div class="blog-entry">
-  <div class="blog-date">04.06.25</div>
-  <div style="display: flex; flex-direction: column; gap: 18px; flex: 1;">
-    <div class="blog-bubble">
-      <h3>project XX</h3>
-      <p>insert a description of a project which was conducted.</p>
-    </div>
-    <div class="blog-bubble" style="background-color:#5AB36D">
-      <h3 style="color:white">solution for project XX</h3>
-      <p style="color:white">insert a description of a follow-up for the same date.</p>
-    </div>
-  </div>
-</div>
-
-
-    <div class="blog-entry">
-      <div class="blog-date">01.06.25</div>
-      <div class="blog-bubble">
-        <h3>project @ XX</h3>
-        <p>insert a description of a project which was conducted in collaboration with XX and YY.</p>
-        <div class="blog-image">
-          <img src="/images/DSC01855.jpeg" alt="Archive Snippet" />
-        </div>
-      </div>
-    </div>
-
-    <div class="blog-entry">
-  <div class="blog-date">01.06.25</div>
-  <div class="blog-bubble">
-    <h3>project @ XX</h3>
-    <p>insert a description of a project which was conducted in collaboration with XX and YY.</p>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a><br>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a><br>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a><br>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-    <a href="https://example.com" target="_blank" class="full-bubble-link">View full project</a>
-  </div>
-</div>
-
-
-<div class="blog-entry">
-  <div style="display: flex; flex-direction: column; align-items: flex-start;">
-    <div class="blog-date">01.06.25</div>
-    <a href="gallery.html" target="_blank" class="blog-date-link" style="margin-top:8px;">Gallery</a>
-  </div>
-  <div class="blog-bubble">
-    <h3>project @ XX</h3>
-    <p>insert a description of a project which was conducted in collaboration with XX and YY.</p>
-    <div class="blog-image">
-      <img src="/images/DSC01855.jpeg" alt="Archive Snippet" />
-    </div>
-  </div>
-</div>
--->
-<!--
-        <div class="blog-entry">
-      <div class="blog-date">02.06.25</div>
-      <div class="blog-bubble">
-        <h3>Notebook Link</h3>
-        <p>insert a description of a project which was conducted in collaboration with XX and YY and link it to their website or another site of this website.</p>
-      </div>
-      
-      <div class="blog-link">
-        <a href="" target="_blank">project x</a>
-      </div>
-    </div>
-
-   -->
+    
 
 
 
@@ -641,6 +229,27 @@
   <footer>
     Persönliche Webseite für das Fach <i>Netzwerke und Schaltungen 2</i> im FS26. About.
   </footer>
+
+  <script>
+    // Small helper to preview hiding the weekly bubble on mobile
+    (function(){
+      var btn = document.getElementById('weeklyToggle');
+      if(!btn) return;
+      function update() {
+        var hidden = document.body.classList.toggle('hide-weekly');
+        btn.setAttribute('aria-pressed', hidden);
+        btn.textContent = hidden ? 'Show weekly' : 'Hide weekly';
+      }
+      btn.addEventListener('click', update);
+      // Only show control on small screens (redundant with CSS) but hide if desktop
+      function check() {
+        if(window.matchMedia('(max-width:760px)').matches) btn.style.display = '';
+        else btn.style.display = 'none';
+      }
+      window.addEventListener('resize', check);
+      check();
+    })();
+  </script>
 
 </body>
 
