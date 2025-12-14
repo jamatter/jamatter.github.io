@@ -72,8 +72,7 @@
     <a href="/about.html">About</a>
   </nav>
 
-  <!-- Mobile preview toggle: tap on phones to hide/show the small 'weekly' bubble -->
-  <button class="mobile-toggle" id="weeklyToggle" aria-pressed="false">Hide weekly</button>
+
 
   <div class="hero">
     <h1>Netzwerke und Schaltungen 2 <span style="color:#777"></span></h1>
@@ -230,27 +229,7 @@
     Persönliche Webseite für das Fach <i>Netzwerke und Schaltungen 2</i> im FS26. About.
   </footer>
 
-  <script>
-    // Small helper to preview hiding the weekly bubble on mobile
-    (function(){
-      var btn = document.getElementById('weeklyToggle');
-      if(!btn) return;
-      function update() {
-        var hidden = document.body.classList.toggle('hide-weekly');
-        btn.setAttribute('aria-pressed', hidden);
-        btn.textContent = hidden ? 'Show weekly' : 'Hide weekly';
-      }
-      btn.addEventListener('click', update);
-      // Only show control on small screens (redundant with CSS) but hide if desktop
-      function check() {
-        if(window.matchMedia('(max-width:760px)').matches) btn.style.display = '';
-        else btn.style.display = 'none';
-      }
-      window.addEventListener('resize', check);
-      check();
-    })();
-  </script>
-
+ 
 </body>
 
 </html>
