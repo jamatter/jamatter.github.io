@@ -100,6 +100,9 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
       transition: box-shadow 0.3s;
       flex-grow: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
     .blog-bubble:hover {
@@ -116,6 +119,14 @@
       font-size: 0.95rem;
       color: #444;
     }
+
+    .blog-bubble h3,
+    .blog-bubble p,
+    .blog-image {
+      grid-column: 1 / -1;
+    }
+
+    .blog-bubble br { display: none; }
 
     .blog-image {
       margin-top: 15px;
@@ -200,32 +211,162 @@
     <!---->
 
     .full-bubble-link {
-  display: inline-block;
-  margin-top: 16px;
-  text-decoration: none;
-  color: #333;
-  padding: 6px 16px;
-  border-radius: 9999px;
-  background-color: #f0f0f0;
-  transition: background 0.2s;
-  font-size: 0.95rem;
-  position: relative;
-}
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 12px;
+      text-decoration: none;
+      color: #333;
+      padding: 8px 16px;
+      border-radius: 20px;
+      min-height: 36px;
+      background-color: #f0f0f0;
+      transition: background 0.18s ease;
+      font-size: 0.95rem;
+    }
 
-.full-bubble-link::after {
-  content: '→';
-  opacity: 0;
-  margin-left: 8px;
-  transition: opacity 0.3s;
-}
+    .full-bubble-link::after {
+      content: '→';
+      display: inline-block;
+      margin-left: auto;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.18s;
+    }
 
-.full-bubble-link:hover {
-  background-color: #e5e5e5;
-}
+    .full-bubble-link:hover { background-color: #e5e5e5; }
 
-.full-bubble-link:hover::after {
-  opacity: 1;
-}
+    .full-bubble-link:hover::after {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    /* --- Radical variants placed OUTSIDE the white blog-bubble --- */
+    .slides-variants { margin: 18px 0 36px; display: grid; gap: 16px; }
+
+    /* Variant 1: Full-width muted strip with large action tiles */
+    .variant-strip {
+      background: #f4f4f4;
+      padding: 14px;
+      border-radius: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .variant-strip .tile {
+      flex: 1 1 0;
+      background: linear-gradient(180deg,#fff,#fbfbfb);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display:flex; align-items:center; justify-content:space-between; text-decoration:none; color:#222;
+    }
+
+    /* Variant 2: Floating tiles grid (cards outside white bubble) */
+    .variant-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .variant-tiles .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      text-decoration: none;
+      color: #222;
+      display:flex; flex-direction:column; gap:8px;
+    }
+
+    /* Variant 3: Compact list with separators (flat, minimal) */
+    .variant-compact { background: transparent; border-radius: 8px; overflow: hidden; }
+    .variant-compact a { display:flex; justify-content:space-between; padding:10px 12px; text-decoration:none; color:#222; background:#fff; border-bottom:1px solid #f1f1f1; }
+    .variant-compact a:last-child { border-bottom:none; }
+
+    /* Variant 4: Timeline/stacked summary (left labels, right actions) */
+    .variant-timeline { display:flex; flex-direction:column; gap:10px; }
+    .variant-timeline .row { display:flex; gap:12px; align-items:center; }
+    .variant-timeline .badge { background:#f0f0f0; padding:6px 10px; border-radius:9999px; font-size:0.85rem; }
+
+    /* Preserve mobile friendliness: stack columns on narrow screens */
+    @media (max-width:760px) {
+      .variant-tiles { grid-template-columns: repeat(2, 1fr); }
+      .variant-strip { flex-direction: column; }
+      .variant-tiles .card, .variant-strip .tile { width:100%; }
+    }
+
+    /* --- More presentation variants for the whole 'slides' block --- */
+    /* Variants A–D: visual alternatives to the weekly white bubble */
+    .variants { grid-column: 1 / -1; margin-top: 14px; }
+    .variants h4 { margin: 12px 0 8px; font-size: 1rem; font-weight: 400; color: #333; }
+
+    /* Variant A — Flat chips row (no white container behind chips) */
+    .variant-a { display: flex; gap: 10px; }
+    .variant-a .chip {
+      flex: 1;
+      padding: 10px 12px;
+      background: #f0f0f0;
+      border-radius: 9999px;
+      text-decoration: none;
+      color: #222;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Variant B — Card grid (small cards inside the white bubble) */
+    .variant-b { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .variant-b .card {
+      padding: 12px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+      text-decoration: none;
+      color: #222;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Variant C — Compact list (muted, table-like) */
+    .variant-c ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+    .variant-c a { display: block; padding: 8px 12px; text-decoration: none; color: #222; border-radius: 8px; background: transparent; border: 1px solid #f0f0f0; }
+
+    /* Variant D — Minimal accordion for bundles */
+    .variant-d details { background: transparent; }
+    .variant-d summary { padding: 10px 12px; border-radius: 12px; background: #f7f7f7; cursor: pointer; }
+
+    /* Section layout: left caption + right content (keeps the caption outside any white bubble) */
+    .slides-section { display: grid; grid-template-columns: 100px 1fr; gap: 14px; align-items:start; grid-column: 1 / -1; }
+    .slides-label { color: #666; font-size: 0.95rem; display:flex; align-items:flex-start; padding-top:6px; }
+
+    @media (max-width:760px) {
+      .slides-section { grid-template-columns: 1fr; }
+      .slides-label { padding-bottom:6px; }
+    }
+
+    /* Make sure the slides block clears and doesn't overlap following entries */
+    .slides-section { margin-bottom: 34px; position: relative; z-index: 0; }
+    .slides-section + .blog-entry { margin-top: 22px; }
+    .blog-entry { position: relative; z-index: 1; }
+
+    /* Caption style variants (choose one by adding the class to .slides-label) */
+    .caption-plain { color: #666; font-weight: 300; }
+    .caption-strong { color: #333; font-weight: 500; }
+    .caption-pill { background:#f0f0f0; padding:6px 10px; border-radius:9999px; color:#444; display:inline-block; }
+    .caption-accent { color:#2d1b10; font-weight:500; }
+    .caption-icon { display:flex; gap:8px; align-items:center; }
+
+    .caption-examples { grid-column: 1 / -1; margin-top: 8px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .caption-examples .label-sample { font-size:0.95rem; color:#444; }
+
+    /* Summary grid: place several small blog-entry cards in a 3-column row */
+    .summary-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 20px; align-items: start; }
+    .summary-grid .blog-entry { margin-bottom: 0; }
+    .summary-grid .blog-bubble { width: 100%; }
+    @media (max-width: 900px) {
+      .summary-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+    }
+    @media (max-width: 520px) {
+      .summary-grid { grid-template-columns: 1fr; }
+    }
 
 
   </style>
@@ -274,40 +415,125 @@
         <a href="https://example.com" target="_blank" class="full-bubble-link">slides W01</a>
         <a href="https://example.com" target="_blank" class="full-bubble-link">slides W02</a>
         <a href="https://example.com" target="_blank" class="full-bubble-link">slides W03</a><br>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W01</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W02</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">slides W03</a><br>
       </div>
     </div>
-     <div class="blog-entry">
-      <div class="blog-date">notes</div>
-      <div class="blog-bubble">
-        <h3>handwritten solutions to exercises</h3>
-        <p>insert a description of a project which was conducted.</p>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a><br>
+    
+   
+      <!-- Variant 2: Floating cards grid 
+      <div class="variant-tiles">
+        <a class="card" href="#"><div style="font-weight:500">Weeks 1–5</div><div style="opacity:0.75">→</div></a>
+        <a class="card" href="#"><div style="font-weight:500">Weeks 6–10</div><div style="opacity:0.75">→</div></a>
+        <a class="card" href="#"><div style="font-weight:500">Weeks 11–15</div><div style="opacity:0.75">→</div></a>
       </div>
-    </div>
-     <div class="blog-entry">
-      <div class="blog-date">kahoots</div>
-      <div class="blog-bubble">
-        <h3>replay weekly concepts</h3>
-        <p>insert a description of a project which was conducted.</p>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
+
+     -->
+
+
+
+
+    <div class="summary-grid">
+      <div class="blog-entry">
+       
+        <div class="blog-bubble">
+          <h3>Slides</h3>
+          <p>insert a description of a project which was conducted.</p>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
+        </div>
       </div>
-    </div>
-     <div class="blog-entry">
-      <div class="blog-date">extras</div>
-      <div class="blog-bubble">
-        <h3>Sonstige Infos und Tipps</h3>
-        <p>insert a description of a project which was conducted.</p>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
-        <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
+
+      <div class="blog-entry">
+     
+        <div class="blog-bubble">
+          <h3>Notes</h3>
+          <p>insert a description of a project which was conducted.</p>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
+        </div>
       </div>
+
+      <div class="blog-entry">
+        
+        <div class="blog-bubble">
+          <h3>Extras</h3>
+          <p>insert a description of a project which was conducted.</p>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
+        </div>
+      </div>
+
+
+       <div class="blog-entry">
+        
+        <div class="blog-bubble">
+          <h3>Kahoots</h3>
+          <p>insert a description of a project which was conducted.</p>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
+        </div>
+      </div>
+
+
+      <div class="blog-entry">
+        
+        <div class="blog-bubble">
+          <h3>Extrasss</h3>
+          <p>insert a description of a project which was conducted.</p>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
+          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
+        </div>
+      </div>
+
     </div>
 <!--
     <div class="blog-entry">
