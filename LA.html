@@ -40,6 +40,14 @@
     .blog-bubble.content-bubble { display:flex; flex-direction:column; align-items:center; text-align:center; }
     .blog-bubble.content-bubble .full-bubble-link { width:auto; display:inline-flex; margin:8px 6px 0; }
 
+    /* PVK bubble color variants (subtle, pro look) */
+    .blog-bubble.pvk-1 { background: linear-gradient(180deg,#f7fafc,#eef6fb); border:1px solid #d7e6f2; color:#0b2540; }
+    .blog-bubble.pvk-2 { background: linear-gradient(180deg,#f6f4f1,#efe9df); border:1px solid #e2d6c6; color:#2b2a24; }
+    .blog-bubble.pvk-3 { background: linear-gradient(180deg,#f3fbf9,#e8f5f2); border:1px solid #cfe8e0; color:#0a2b2a; }
+    .blog-bubble.pvk-4 { background: linear-gradient(180deg,#f3f3f3,#ececec); border:1px solid #d0d0d0; color:#111; }
+    .blog-bubble.pvk-1 h3, .blog-bubble.pvk-2 h3, .blog-bubble.pvk-3 h3, .blog-bubble.pvk-4 h3 { color:inherit; }
+    .blog-bubble.pvk-1 p, .blog-bubble.pvk-2 p, .blog-bubble.pvk-3 p, .blog-bubble.pvk-4 p { color:inherit; }
+
     .full-bubble-link { display:flex; align-items:center; justify-content:flex-start; width:100%; box-sizing:border-box; margin-top:12px; text-decoration:none; color:#333; padding:8px 16px; border-radius:20px; min-height:36px; background:#f0f0f0; transition:background .18s; font-size:.95rem; }
     .full-bubble-link::after { content:'→'; display:inline-block; margin-left:auto; opacity:0; transition:opacity .18s, transform .18s; }
     .full-bubble-link:hover { background:#e5e5e5; }
@@ -103,74 +111,138 @@
           </div>
         </div>
 
-        <div class="blog-bubble content-bubble">
-          <h3>under construction</h3>
-          <p>this website is currently being recovered from the n.ethz version. Expected to be available early January 2026.</p>
-          <!--
-          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:8px;">
-            <a href="https://example.com" target="_blank" class="full-bubble-link">slides</a>
-            <a href="https://example.com" target="_blank" class="full-bubble-link">notes</a>
-            <a href="https://example.com" target="_blank" class="full-bubble-link">kahoot</a>
-          </div>
-          -->
+
+
+
+<!-- VARIANT 2 — Separate category bubbles (Notes / Kahoots / Extras) with inner pill mosaic -->
+<div style="margin:0 0 32px; width:100%;">
+  <div class="blog-bubble content-bubble" style="padding:18px;">
+    <h3>PVK</h3>
+    <p style="color:#444;margin:6px 0 0;">Die kompletten Unterlagen, alte Prüfungen und Aufzeichnungen zum LinAlg PVK vom HS24.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(240px,1fr));gap:12px;margin-top:12px;">
+    <div class="blog-bubble content-bubble" style="padding:12px;">
+      <p style="margin:0 0 8px;">Morgen</p>
+      <p style="color:#444;margin:0;">Basics // Orthogonale Vektoren // Matrizen und QR‑Zerlegung (Givens & Householder) // QR mit Gram‑Schmidt und „Trick" // Vektorräume, Unterräume, Skalarprodukte // Bild, Kern, Basis von Kern // Basis, Basiswechsel, Koordinaten</p>
+    </div>
+    <div class="blog-bubble content-bubble" style="padding:12px;">
+      <p style="margin:0 0 8px;">Nachmittag</p>
+      <p style="color:#444;margin:0;">Abbildungsmatrizen // kommutative Diagramme // Ausgleichsrechnung // Eigenwerte, Eigenvektoren, DGL // Singulärwertzerlegung // Buffer & Peptalk </p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:12px;margin-top:14px;">
+    <div class="blog-bubble content-bubble" style="padding:14px;">
+      <p style="margin-bottom:10px;">Docs</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <!-- week pills -->
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <a class="full-bubble-link" href="/ETH_docs/LA/pvk_hs24/lahs24_pvk_theorie.pdf">Theorie</a>
+          
+          <a class="full-bubble-link" href="/ETH_docs/LA/pvk_hs24/lahs24_pvk_exercises.pdf">Übungen</a>
+          <a class="full-bubble-link" href="/ETH_docs/LA/pvk_hs24/python_examples.pdf">Python</a>
+          
+
+          
+          
         </div>
       </div>
     </div>
 
+    <div class="blog-bubble content-bubble" style="padding:14px;">
+      <p style="margin-bottom:10px;">Recording & Kahoot</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <a class="full-bubble-link" href="https://ethz.zoom.us/rec/share/dVlSPL60Ruyet-J3Azvg-piQpb-ESV5aY48tvisBD7sNjj5l6C0aRxwi9BN0OTpb.XPteFuO6m9BVvQCi">Recording</a>
+        <a class="full-bubble-link" href="https://create.kahoot.it/share/lahs24-pvk-1/028e18e8-e4af-430e-82bd-22603f8d4be0">Kahoot 1</a>
+        <a class="full-bubble-link" href="https://create.kahoot.it/share/lahs24-pvk2-janu/ae6d5f2c-8a6f-4d54-85cf-338f1eda3f82">Kahoot 2</a>
+      
+      </div>
+    </div>
 
-    
+    <div class="blog-bubble content-bubble" style="padding:14px;">
+      <p style="margin-bottom:10px;">Alte Prüfungen</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        
+        <a class="full-bubble-link" href="/ETH_docs/LA/pvk_hs24/W20-vorschlag.pdf">W20</a>
+        <a class="full-bubble-link" href="/ETH_docs/LA/pvk_hs24/S20-vorschlag.pdf">S20</a>
+        <a class="full-bubble-link" href="/ETH_docs/LA/pvk_hs24/W19-vorschlag.pdf">S19</a>
+        <a class="full-bubble-link" href="/ETH_docs/LA/pvk_hs24/S19-vorschlag.pdf">S19</a>
+        <a class="full-bubble-link" href="/ETH_docs/LA/pvk_hs24/pvkfragestunde.pdf">Riesz</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        
+      </div>
+    </div>
 
 
 
 
+
+
+
+
+<!--
     
 <div style="display:flex;justify-content:center;margin:20px 0;">
   <a href="/index.html" class="full-bubble-link" style="width:auto;display:inline-flex;">Back to Home</a>
 </div>
 
-      <!--
-      
-      <div class="sep-full-text" aria-hidden="true"><div class="sep-text">back to home<br><br><br></div></div>
+-->
+
+
+      <div class="sep-full-text" aria-hidden="true"><div class="sep-text">HS24 In a nutshell<br><br><br><br></div></div>
    
 
-    <div class="summary-grid">
+  <div class="summary-grid">
       <div class="blog-entry">
        
         <div class="blog-bubble">
-          <h3>Slides</h3>
-          <p>insert a description of a project which was conducted.</p>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
-        </div>
+          <h3>Notes</h3>
+          <p>Handwritten notes containing the theory.</p>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w01.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W01'});">W01</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w02.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W02'});">W02</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w03.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W03'});">W03</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w04.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W04'});">W04</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w05.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W05'});">W05</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w06.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W06'});">W06</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w07.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W07'});">W07</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w08.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W08'});">W08</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w09.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W09'});">W09</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w10.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W10'});">W10</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w11.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W11'});">W11</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w12.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W12'});">W12</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w13.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W13'});">W13</a>
+          <a href="/ETH_docs/LA/LA_HS24/lahs24w14.pdf" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'Slides', 'event_label': 'W14'});">W14</a>
+      
+      </div>
       </div>
 
       <div class="blog-entry">
      
         <div class="blog-bubble">
-          <h3>Notes</h3>
-          <p>insert a description of a project which was conducted.</p>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
+          <h3>Kahoots</h3>
+          <p>Weekly games around key concepts and more.</p>
+          <a href="https://create.kahoot.it/share/w01/885f3be8-84c4-463b-b2ce-d3736084bd9d" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W01'});">W01</a>
+          <a href="https://create.kahoot.it/share/w02/2fdc71ed-8701-4f8e-ac2c-de2d3817e341" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W02'});">W02</a>
+          <a href="https://create.kahoot.it/share/w03/3b3881a3-eedd-4e09-8135-0a0e36813d3d" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W03'});">W03</a>
+          <a href="https://create.kahoot.it/share/lahs24-w04-janu/17e6c4a2-bf74-4d7f-89e1-4860e9582657" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W04'});">W04</a>
+          <a href="https://create.kahoot.it/share/lahs24-w05-janu/809cda8e-c45b-4c68-b5eb-b61873737792" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W05'});">W05</a>
+          <a href="https://create.kahoot.it/share/lahs24-w06-janu/103a3e30-7b62-4ffa-8949-baf4b2bef2c5" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W06'});">W06</a>
+          <a href="https://create.kahoot.it/share/lahs24-w07-janu/6678d958-ce4c-45ee-b6d6-587f7bbeda77" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W07'});">W07</a>
+          <a href="https://create.kahoot.it/share/lahs24-w08-janu/48ff45f6-fd4c-4247-aa29-369bc3062f85" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W08'});">W08</a>
+          <a href="https://create.kahoot.it/share/lahs24-w09-janu/870065a8-af73-4e6e-bf2b-690c4d569200" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W09'});">W09</a>
+          <a href="https://create.kahoot.it/share/lahs24w10janu/29d180af-f35d-457d-9141-b841d1fe7e79" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W10'});">W10</a>
+          <a href="https://create.kahoot.it/share/lahs24-w11-janu/d353daa0-8296-4630-81d0-e392d2dc0f82" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W11'});">W11</a>
+          <a href="https://create.kahoot.it/share/lahs24-w12-janu/9e609e02-11a3-436b-b259-e9130d0600aa" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W12'});">W12</a>
+          <a href="https://create.kahoot.it/share/lahs24w13-janu/fef4d239-9370-4266-8993-f557e8fcc44b" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W13'});">W13</a>
+          <a href="https://create.kahoot.it/share/lahs24w14-janu/382f5345-f35f-4969-9c39-ab39cdcb60de" target="_blank" class="full-bubble-link" onclick="gtag('event', 'click', {'event_category': 'kahoot', 'event_label': 'W14'});">W14</a>
+          
         </div>
       </div>
 
@@ -178,40 +250,38 @@
         
         <div class="blog-bubble">
           <h3>Extras</h3>
-          <p>insert a description of a project which was conducted.</p>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
-        </div>
+          <p>(E)xamples and (F)lash exams with a little extras.</p>
+          <a href="/ETH_docs/LA/LA_HS24/addex1.pdf" target="_blank" class="full-bubble-link">E01</a>
+
+          <a href="/ETH_docs/LA/LA_HS24/flashexam1.pdf" target="_blank" class="full-bubble-link">F06</a>
+         
+          <a href="/ETH_docs/LA/LA_HS24/flashexam2_lineare_abbildungen.pdf" target="_blank" class="full-bubble-link">F09</a>
+          <a href="/ETH_docs/LA/LA_HS24/flashexam3.pdf" target="_blank" class="full-bubble-link">F10</a>
+          <a href="/ETH_docs/LA/LA_HS24/zusatzw12.pdf" target="_blank" class="full-bubble-link">E11</a>
+          <a href="/ETH_docs/LA/LA_HS24/img_compression_SVD.pdf" target="_blank" class="full-bubble-link">SVD</a>
+          <a href="/ETH_docs/LA/LA_HS24/img_comparison_example_W13.pdf" target="_blank" class="full-bubble-link">SVD</a>
+          
+      </div>
       </div>
 
-
+<!--
        <div class="blog-entry">
         
         <div class="blog-bubble">
-          <h3>Kahoots</h3>
-          <p>insert a description of a project which was conducted.</p>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
+          <h3>NUS2 Extras</h3>
+          <p>(S)hort summaries, mock exams (ME) and (R)emarks regarding homework.</p>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/zeitzuzeigerw01.pdf" target="_blank" class="full-bubble-link">S01</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S01.pdf" target="_blank" class="full-bubble-link">R01</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S02.pdf" target="_blank" class="full-bubble-link">R02</a>
+          <a href="ETH_docs/NUS2/NUS2_FS26/dreiphasen_explained.pdf" target="_blank" class="full-bubble-link">3PH</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S04.pdf" target="_blank" class="full-bubble-link">R04</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/bode_w05.pdf" target="_blank" class="full-bubble-link">S05</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S06.pdf" target="_blank" class="full-bubble-link">R06</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S07.pdf" target="_blank" class="full-bubble-link">R07</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/impedanz-admittanz-w09.pdf" target="_blank" class="full-bubble-link">S09</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/nus2_W09_shortexam.pdf" target="_blank" class="full-bubble-link">ME1</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/nus2_W10_shortexam.pdf" target="_blank" class="full-bubble-link">ME2</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
         </div>
       </div>
 
@@ -219,27 +289,27 @@
       <div class="blog-entry">
         
         <div class="blog-bubble">
-          <h3>Extrasss</h3>
-          <p>insert a description of a project which was conducted.</p>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W01</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W02</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W03</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W04</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W05</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W06</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W07</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W08</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W09</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W10</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W11</a>
-          <a href="https://example.com" target="_blank" class="full-bubble-link">W12</a>
+          <h3>How to</h3>
+          <p>NUS2 Exam, Basisprüfungen, survive ETH... you name it.</p>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/how_to_eth_pt1_shorted.pdf" target="_blank" class="full-bubble-link">Pt. 1</a>
+          <a href="/ETH_docs/NUS2/NUS2_FS26/how_to_eth_pt2_FS24.pdf" target="_blank" class="full-bubble-link">Pt. 2</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
+          <a href="" target="_blank" class="full-bubble-link">-</a>
         </div>
       </div>
 
     
-
-
 -->
+
+
 </section>
 
   
@@ -248,8 +318,7 @@
     Persönliche Webseite für das Fach <i>Lineare Algebra</i> im HS24. <a href="/about.html" style="color:#888; text-decoration:underline;">About</a>.
   </footer>
 
-
-
+ 
 </body>
 
 </html>
