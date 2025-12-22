@@ -40,13 +40,26 @@
     .blog-bubble.content-bubble { display:flex; flex-direction:column; align-items:center; text-align:center; }
     .blog-bubble.content-bubble .full-bubble-link { width:auto; display:inline-flex; margin:8px 6px 0; }
 
-    /* PVK bubble color variants (subtle, pro look) */
-    .blog-bubble.pvk-1 { background: linear-gradient(180deg,#f7fafc,#eef6fb); border:1px solid #d7e6f2; color:#0b2540; }
-    .blog-bubble.pvk-2 { background: linear-gradient(180deg,#f6f4f1,#efe9df); border:1px solid #e2d6c6; color:#2b2a24; }
-    .blog-bubble.pvk-3 { background: linear-gradient(180deg,#f3fbf9,#e8f5f2); border:1px solid #cfe8e0; color:#0a2b2a; }
-    .blog-bubble.pvk-4 { background: linear-gradient(180deg,#f3f3f3,#ececec); border:1px solid #d0d0d0; color:#111; }
-    .blog-bubble.pvk-1 h3, .blog-bubble.pvk-2 h3, .blog-bubble.pvk-3 h3, .blog-bubble.pvk-4 h3 { color:inherit; }
-    .blog-bubble.pvk-1 p, .blog-bubble.pvk-2 p, .blog-bubble.pvk-3 p, .blog-bubble.pvk-4 p { color:inherit; }
+    /* PVK bubble color variants — minimalist, grayscale, modern (Apple-like) */
+    .blog-bubble.pvk-1 { background: linear-gradient(180deg,#fbfbfb,#f5f5f6); border:1px solid rgba(0,0,0,0.06); color:#0b0b0b; box-shadow:0 6px 18px rgba(11,11,11,0.03); }
+    .blog-bubble.pvk-2 { background:#ffffff; border:1px solid rgba(0,0,0,0.08); color:#0b0b0b; box-shadow:0 10px 30px rgba(11,11,11,0.04); }
+    .blog-bubble.pvk-3 { background: linear-gradient(180deg,#f8f8f8,#f2f2f3); border:1px solid rgba(0,0,0,0.05); color:#0b0b0b; box-shadow:none; }
+    .blog-bubble.pvk-4 { background:#f7f7f7; border:1px solid rgba(0,0,0,0.04); color:#0b0b0b; box-shadow:0 3px 10px rgba(11,11,11,0.02); }
+    .blog-bubble.pvk-1 h3, .blog-bubble.pvk-2 h3, .blog-bubble.pvk-3 h3, .blog-bubble.pvk-4 h3 { color:inherit; font-weight:400; }
+    .blog-bubble.pvk-1 p, .blog-bubble.pvk-2 p, .blog-bubble.pvk-3 p, .blog-bubble.pvk-4 p { color:rgba(0,0,0,0.75); }
+    .blog-bubble.pvk-1, .blog-bubble.pvk-2, .blog-bubble.pvk-3, .blog-bubble.pvk-4 { border-radius:14px; }
+
+    /* PVK section grid helpers */
+    .pvk-section { width:100%; }
+    .pvk-row { display:grid; gap:12px; }
+    .pvk-row.pvk-2 { grid-template-columns:repeat(2,minmax(240px,1fr)); }
+    .pvk-row.pvk-3 { grid-template-columns:repeat(3,minmax(180px,1fr)); }
+
+    /* Responsive: stack PVK rows on narrow screens to avoid horizontal overflow */
+    @media (max-width:760px) {
+      .pvk-row.pvk-2, .pvk-row.pvk-3 { grid-template-columns:1fr !important; }
+      .pvk-section .blog-bubble { width:100%; box-sizing:border-box; }
+    }
 
     .full-bubble-link { display:flex; align-items:center; justify-content:flex-start; width:100%; box-sizing:border-box; margin-top:12px; text-decoration:none; color:#333; padding:8px 16px; border-radius:20px; min-height:36px; background:#f0f0f0; transition:background .18s; font-size:.95rem; }
     .full-bubble-link::after { content:'→'; display:inline-block; margin-left:auto; opacity:0; transition:opacity .18s, transform .18s; }
@@ -115,26 +128,26 @@
 
 
 <!-- VARIANT 2 — Separate category bubbles (Notes / Kahoots / Extras) with inner pill mosaic -->
-<div style="margin:0 0 32px; width:100%;">
+<div class="pvk-section" style="margin:0 0 32px; width:100%;">
   <div class="blog-bubble content-bubble" style="padding:18px;">
-    <h3>PVK</h3>
+    <h3 style="font-size:1.8rem; line-height:1.4; font-weight:200;">PVK</h3>
     <p style="color:#444;margin:6px 0 0;">Die kompletten Unterlagen, alte Prüfungen und Aufzeichnungen zum LinAlg PVK vom HS24.</p>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(2,minmax(240px,1fr));gap:12px;margin-top:12px;">
+  <div class="pvk-row pvk-2" style="margin-top:12px;">
     <div class="blog-bubble content-bubble" style="padding:12px;">
-      <p style="margin:0 0 8px;">Morgen</p>
+      <p style="margin:0 0 8px; font-size:1.2rem; line-height:1.3; font-weight:100">Morgen</p>
       <p style="color:#444;margin:0;">Basics // Orthogonale Vektoren // Matrizen und QR‑Zerlegung (Givens & Householder) // QR mit Gram‑Schmidt und „Trick" // Vektorräume, Unterräume, Skalarprodukte // Bild, Kern, Basis von Kern // Basis, Basiswechsel, Koordinaten</p>
     </div>
     <div class="blog-bubble content-bubble" style="padding:12px;">
-      <p style="margin:0 0 8px;">Nachmittag</p>
+      <p style="margin:0 0 8px; font-size:1.2rem; line-height:1.3; font-weight:100">Nachmittag</p>
       <p style="color:#444;margin:0;">Abbildungsmatrizen // kommutative Diagramme // Ausgleichsrechnung // Eigenwerte, Eigenvektoren, DGL // Singulärwertzerlegung // Buffer & Peptalk </p>
     </div>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:12px;margin-top:14px;">
+  <div class="pvk-row pvk-3" style="margin-top:14px;">
     <div class="blog-bubble content-bubble" style="padding:14px;">
-      <p style="margin-bottom:10px;">Docs</p>
+      <p style="margin-bottom:10px; font-size:1.2rem; line-height:1.3; font-weight:100">Docs</p>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <!-- week pills -->
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
@@ -151,7 +164,7 @@
     </div>
 
     <div class="blog-bubble content-bubble" style="padding:14px;">
-      <p style="margin-bottom:10px;">Recording & Kahoot</p>
+      <p style="margin-bottom:10px;font-size:1.2rem; line-height:1.3; font-weight:100">Recording & Kahoots</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;">
         <a class="full-bubble-link" href="https://ethz.zoom.us/rec/share/dVlSPL60Ruyet-J3Azvg-piQpb-ESV5aY48tvisBD7sNjj5l6C0aRxwi9BN0OTpb.XPteFuO6m9BVvQCi">Recording</a>
         <a class="full-bubble-link" href="https://create.kahoot.it/share/lahs24-pvk-1/028e18e8-e4af-430e-82bd-22603f8d4be0">Kahoot 1</a>
@@ -161,7 +174,7 @@
     </div>
 
     <div class="blog-bubble content-bubble" style="padding:14px;">
-      <p style="margin-bottom:10px;">Alte Prüfungen</p>
+      <p style="margin-bottom:10px;font-size:1.2rem; line-height:1.3; font-weight:100">Alte Prüfungen</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;">
         
         <a class="full-bubble-link" href="/ETH_docs/LA/pvk_hs24/W20-vorschlag.pdf">W20</a>
@@ -264,50 +277,7 @@
       </div>
       </div>
 
-<!--
-       <div class="blog-entry">
-        
-        <div class="blog-bubble">
-          <h3>NUS2 Extras</h3>
-          <p>(S)hort summaries, mock exams (ME) and (R)emarks regarding homework.</p>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/zeitzuzeigerw01.pdf" target="_blank" class="full-bubble-link">S01</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S01.pdf" target="_blank" class="full-bubble-link">R01</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S02.pdf" target="_blank" class="full-bubble-link">R02</a>
-          <a href="ETH_docs/NUS2/NUS2_FS26/dreiphasen_explained.pdf" target="_blank" class="full-bubble-link">3PH</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S04.pdf" target="_blank" class="full-bubble-link">R04</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/bode_w05.pdf" target="_blank" class="full-bubble-link">S05</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S06.pdf" target="_blank" class="full-bubble-link">R06</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/recap_S07.pdf" target="_blank" class="full-bubble-link">R07</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/impedanz-admittanz-w09.pdf" target="_blank" class="full-bubble-link">S09</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/nus2_W09_shortexam.pdf" target="_blank" class="full-bubble-link">ME1</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/nus2_W10_shortexam.pdf" target="_blank" class="full-bubble-link">ME2</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-        </div>
-      </div>
 
-
-      <div class="blog-entry">
-        
-        <div class="blog-bubble">
-          <h3>How to</h3>
-          <p>NUS2 Exam, Basisprüfungen, survive ETH... you name it.</p>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/how_to_eth_pt1_shorted.pdf" target="_blank" class="full-bubble-link">Pt. 1</a>
-          <a href="/ETH_docs/NUS2/NUS2_FS26/how_to_eth_pt2_FS24.pdf" target="_blank" class="full-bubble-link">Pt. 2</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-          <a href="" target="_blank" class="full-bubble-link">-</a>
-        </div>
-      </div>
-
-    
--->
 
 
 </section>
