@@ -126,7 +126,7 @@
       <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
         <div class="blog-bubble image-bubble">
           <div class="blog-image">
-            <img src="/images/ETH/basee2.jpg" alt="Mosaic Grid Sample" />
+            <img src="/images/ETH/kwap.jpg" alt="Mosaic Grid Sample" />
             
             <!--<img src="/images/shootings/DSC02817.jpg" alt="Mosaic Grid Sample" />-->   
           </div>
@@ -265,16 +265,32 @@
             <h3>TR</h3>
             <p style="margin:0 0 8px 0; color:white">Group order of HP Prime G2</p>
            
-          <!-- 
+           
             <button class="tr-button" type="button" style="padding-bottom:12px;">Info</button>
-           -->
+          
             
           </div>
         </div>
       </div>
-    
 
-
+      <!-- Mailing List Signup Bubble -->
+      <div class="blog-entry">
+        <div class="blog-bubble tr-bubble content-bubble" style="padding:20px;">
+          <h3>Mailing List</h3>
+          <p style="margin:0 0 12px 0; color:white">
+            Enter your ETH Kürzel to join my mailing list for updates.
+          </p>
+          <form id="mailingListForm" style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+            <input type="text" id="kuerzelInput" placeholder="jamatter" 
+                   style="padding:10px 14px;border-radius:10px;border:none;min-width:160px;font-size:1rem;text-align:center;">
+            <button class="tr-button" type="submit">Sign Up</button>
+            <span id="mailingListMsg" style="margin-top:6px;font-size:0.9em;min-height:1.2em;"></span>
+          </form>
+          <p style="margin-top:12px;font-size:0.85em;color:#aaa;">
+            To unsubscribe, email <a href="mailto:jamatter@ethz.ch" style="color:#fff;text-decoration:underline;">jamatter@ethz.ch</a>
+          </p>
+        </div>
+      </div>
 
 </section>
 
@@ -351,5 +367,58 @@
     if(action){ action.addEventListener('click', function(){ alert('Primary TR action triggered'); closeModal(); }); }
     if(modal){ modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); }); }
   })();
+</script>
+
+<!-- Mailing List Script -->
+<script>
+(function(){
+  // CHANGE THIS to your actual backend URL (see instructions)
+  var BACKEND_URL = 'https://script.google.com/macros/s/AKfycbyr5VPOEw3x3o33IExoCGtu0dSmVXEmCIE7_mtqRDxCKAeYg3QjcpM5PSTXGjQNZQ9vrQ/exec';
+  
+  var form = document.getElementById('mailingListForm');
+  var input = document.getElementById('kuerzelInput');
+  var msg = document.getElementById('mailingListMsg');
+  
+  if(form){
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var kuerzel = input.value.trim().toLowerCase();
+      
+      // Validate: alphanumeric, 2-12 chars
+      if(!/^[a-z0-9]{2,12}$/.test(kuerzel)){
+        msg.textContent = 'Please enter a valid ETH Kürzel (2-12 letters/numbers).';
+        msg.style.color = '#ffb3b3';
+        return;
+      }
+      
+      msg.textContent = 'Submitting...';
+      msg.style.color = '#fff';
+      
+      try {
+        var res = await fetch(BACKEND_URL, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ kuerzel: kuerzel })
+        });
+        var data = await res.json();
+        
+        if(data.status === 'exists'){
+          msg.textContent = 'You are already on the list!';
+          msg.style.color = '#ffe066';
+        } else if(data.status === 'ok'){
+          msg.textContent = 'Success! You have been added.';
+          msg.style.color = '#b6ffb3';
+          input.value = '';
+        } else {
+          msg.textContent = 'Error: ' + (data.message || 'Please try again.');
+          msg.style.color = '#ffb3b3';
+        }
+      } catch(err) {
+        msg.textContent = 'Server error. Please try again later.';
+        msg.style.color = '#ffb3b3';
+      }
+    });
+  }
+})();
 </script>
 
