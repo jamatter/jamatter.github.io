@@ -372,7 +372,6 @@
 <!-- Mailing List Script -->
 <script>
 (function(){
-  // CHANGE THIS to your actual backend URL (see instructions)
   var BACKEND_URL = 'https://script.google.com/macros/s/AKfycbyr5VPOEw3x3o33IExoCGtu0dSmVXEmCIE7_mtqRDxCKAeYg3QjcpM5PSTXGjQNZQ9vrQ/exec';
   
   var form = document.getElementById('mailingListForm');
@@ -395,10 +394,10 @@
       msg.style.color = '#fff';
       
       try {
-        var res = await fetch(BACKEND_URL, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ kuerzel: kuerzel })
+        // Use GET request with query parameter (more reliable with Google Apps Script)
+        var res = await fetch(BACKEND_URL + '?kuerzel=' + encodeURIComponent(kuerzel), {
+          method: 'GET',
+          mode: 'cors'
         });
         var data = await res.json();
         
