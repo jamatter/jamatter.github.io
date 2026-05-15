@@ -62,6 +62,17 @@
     @media (max-width:520px) { .hero { padding:46px 16px; min-height:140px; } .sep-full-text { padding:10px 0; } }
 
     footer { text-align:center; font-size:.8rem; color:#888; padding:40px 20px; background:#f6f6f4; }
+
+/* Modal */
+.modal-overlay { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); z-index:2200; overflow:auto; -webkit-overflow-scrolling:touch; padding:12px; }
+.modal { background:#fff; padding:24px; border-radius:12px; max-width:720px; width:92%; box-shadow:0 20px 60px rgba(0,0,0,0.25); position:relative; max-height:calc(100vh - 80px); overflow-y:auto; -webkit-overflow-scrolling:touch; box-sizing:border-box; }
+.modal h2 { margin:0 0 8px 0; font-size:1.25rem; }
+.modal .modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:16px; }
+.modal .btn { padding:8px 14px; border-radius:10px; border:1px solid rgba(0,0,0,0.08); background:#f4f4f6; cursor:pointer; }
+.modal .btn:hover { background:#e5e5e5; }
+.expand-link::after { display:none !important; }
+
+
   </style>
 
 
@@ -77,6 +88,8 @@
 
 
 </head>
+
+
 <body>
 
   <nav>
@@ -90,7 +103,7 @@
   <div class="hero">
     <h1>Ciao! I'm Janick. <span style="color:#777"></span></h1>
     
-    <p>About me</p>
+    <p>Nice to meet you.</p>
   </div>
 
   <section class="blog-section" id="diary">
@@ -104,11 +117,8 @@
         </div>
 
         <div class="blog-bubble content-bubble">
-          <h3>Nice to meet you!</h3>
-          <p>Soon: Master Thesis in collaboration with V-ZUG, on Computer Vision based Quality Control</p>
-          <p>Currently: AI Solutions Engineer Intern @UBS, TA for NUS2 course @ETH, MSc in EEIT</p>
-          <p>Previous: TA for Linear Algebra course @ETH, PVK tutor (LA & NUS2) @VSETH, other engagements</p>
-          <p>Looking forward to hearing from you.</p>
+          <h3>Nice to meet you.</h3>
+          <p>Whatever brought you here, I'm looking forward to hearing from you.</p>
           <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:8px;">
             <a href="mailto:jamatter@ethz.ch?subject=Anfrage%20von%20der%20Website" 
             onclick="gtag('event', 'email', {
@@ -123,6 +133,95 @@
             
           </div>
         </div>
+
+
+
+
+<div class="summary-grid">
+  <div class="blog-entry">
+    <div class="blog-bubble content-bubble">
+      <h3>Soon</h3>
+      <p>Master Thesis</p>
+      <p style="font-size:0.85rem;color:#666;">V-ZUG | Computer Vision</p>
+      <a href="javascript:void(0)" onclick="openModal('soon-modal')" class="full-bubble-link expand-link">+</a>
+    </div>
+  </div>
+
+  <div class="blog-entry">
+    <div class="blog-bubble content-bubble">
+      <h3>Currently</h3>
+      <p>AI Solutions Engineer</p>
+      <p style="font-size:0.85rem;color:#666;">UBS Intern & TA @ETH</p>
+      <a href="javascript:void(0)" onclick="openModal('current-modal')" class="full-bubble-link expand-link">+</a>
+    </div>
+  </div>
+
+  <div class="blog-entry">
+    <div class="blog-bubble content-bubble">
+      <h3>Previously</h3>
+      <p>Teaching & Mentoring</p>
+      <p style="font-size:0.85rem;color:#666;">LA, NUS2, VSETH</p>
+      <a href="javascript:void(0)" onclick="openModal('prev-modal')" class="full-bubble-link expand-link">+</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modals -->
+<div id="soon-modal" class="modal-overlay" aria-hidden="true">
+  <div class="modal">
+    <h2>Master Thesis</h2>
+    <div style="border-radius:12px;overflow:hidden;margin:16px 0;">
+      <img src="/images/vzug_building.jpg" alt="V-ZUG Thesis" style="width:100%;display:block;border-radius:12px;">
+    </div>
+    <p><strong>V-ZUG | Starting Soon</strong></p>
+    <p>Computer Vision based Quality Control system for manufacturing.</p>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('soon-modal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="current-modal" class="modal-overlay" aria-hidden="true">
+  <div class="modal">
+    <h2>Currently</h2>
+    <div style="border-radius:12px;overflow:hidden;margin:16px 0;">
+      <img src="/images/ubs_building.jpg" alt="Current work" style="width:100%;display:block;border-radius:12px;">
+    </div>
+    <p><strong>AI Solutions Engineer</strong> @ UBS</p>
+    <p>Building AI solutions for financial services.</p>
+    <p style="margin-top:12px;"><strong>Teaching Assistant</strong> @ ETH</p>
+    <p>NUS2 course support for MSc students.</p>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('current-modal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="prev-modal" class="modal-overlay" aria-hidden="true">
+  <div class="modal">
+    <h2>Previously</h2>
+    <div style="border-radius:12px;overflow:hidden;margin:16px 0;">
+      <img src="/images/glc_building.jpg" alt="Teaching experience" style="width:100%;display:block;border-radius:12px;">
+    </div>
+    <p><strong>Linear Algebra TA</strong> @ ETH</p>
+    <p>Supporting first-year students.</p>
+    <p style="margin-top:12px;"><strong>PVK Tutor</strong> @ VSETH</p>
+    <p>Exam preparation coaching.</p>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('prev-modal')">Close</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
       </div>
     </div>
 
@@ -142,7 +241,29 @@
     Persönliche Webseite.
   </footer>
 
-  
+  <script>
+function openModal(id) {
+  var modal = document.getElementById(id);
+  modal.style.display = 'flex';
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  var modal = document.getElementById(id);
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('click', function(e) {
+  if(e.target.classList.contains('modal-overlay')) {
+    e.target.style.display = 'none';
+    e.target.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+});
+</script>
 
 </body>
 
