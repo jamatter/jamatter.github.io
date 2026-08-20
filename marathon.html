@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marathon — 25 Oct 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #F8F7F5;
+    --ink:      #1A1A18;
+    --ink-2:    #5A5A55;
+    --ink-3:    #9A9A95;
+    --rule:     #E2E0DC;
+    --green:    #1A5C3A;
+    --green-bg: #EBF3EE;
+    --green-mid:#2D7A52;
+    --blue:     #2B4C7E;
+    --blue-bg:  #EBF0F8;
+    --orange:   #C4501A;
+    --orange-bg:#FAF0EB;
+    --purple:   #5C3A8A;
+    --purple-bg:#F2EEFA;
+    --gold:     #8A6200;
+    --gold-bg:  #FDF4E0;
+    --mono:     'DM Mono', monospace;
+    --sans:     'Inter', system-ui, sans-serif;
+  }
+
+  html { font-size: 16px; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 3rem 1.5rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .header-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 1rem;
+  }
+  .header-main {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .countdown-block {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .countdown-num {
+    font-family: var(--mono);
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 500;
+    color: var(--green);
+    line-height: 1;
+  }
+  .countdown-label {
+    font-size: 11px;
+    color: var(--ink-3);
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .header-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .stat-item { }
+  .stat-val {
+    font-family: var(--mono);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .stat-lbl {
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 1px;
+  }
+
+  /* ── NAV TABS ── */
+  .nav-wrap {
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+  }
+  nav {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 1.5rem;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-3);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.75rem 1rem 0.65rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+    margin-bottom: -1px;
+  }
+  .nav-btn:hover { color: var(--ink); }
+  .nav-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+
+  /* ── MAIN CONTENT ── */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+  .tab-panel { display: none; padding-top: 2rem; }
+  .tab-panel.active { display: block; }
+
+  /* ── WEEK NAVIGATION ── */
+  .week-nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+  }
+  .week-btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink-3);
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .week-btn:hover { border-color: var(--ink-3); color: var(--ink); }
+  .week-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .week-btn.star { }
+
+  /* ── WEEK HEADER ── */
+  .week-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .week-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .week-meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+  .phase-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 0.75rem;
+    vertical-align: middle;
+  }
+  .phase-build  { background: var(--green-bg);  color: var(--green); }
+  .phase-peak   { background: var(--blue-bg);   color: var(--blue); }
+  .phase-taper  { background: var(--orange-bg); color: var(--orange); }
+  .phase-race   { background: var(--gold-bg);   color: var(--gold); }
+
+  /* ── DAY CARDS ── */
+  .day-card {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 0.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .day-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+  .day-card.type-easy   ::before,
+  .day-card.type-easy::before   { background: var(--green); }
+  .day-card.type-long::before   { background: var(--blue); }
+  .day-card.type-tempo::before  { background: var(--orange); }
+  .day-card.type-physio::before { background: var(--purple); }
+  .day-card.type-rest::before   { background: var(--rule); }
+  .day-card.type-race::before   { background: var(--gold); }
+
+  .day-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .day-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    padding-top: 2px;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+  .day-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    flex: 1;
+  }
+  .type-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .tag-easy   { background: var(--green-bg);  color: var(--green-mid); }
+  .tag-long   { background: var(--blue-bg);   color: var(--blue); }
+  .tag-tempo  { background: var(--orange-bg); color: var(--orange); }
+  .tag-physio { background: var(--purple-bg); color: var(--purple); }
+  .tag-rest   { background: #F0EFED;          color: var(--ink-3); }
+  .tag-race   { background: var(--gold-bg);   color: var(--gold); }
+
+  .day-body {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.65;
+    padding-left: calc(90px + 0.75rem);
+  }
+  @media (max-width: 480px) {
+    .day-body { padding-left: 0; }
+    .day-date { min-width: unset; }
+  }
+
+  /* ── PACE CHIPS ── */
+  .pace {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 1px 7px;
+    border-radius: 3px;
+    margin: 0 2px;
+    white-space: nowrap;
+  }
+
+  /* ── PHYSIO BLOCKS ── */
+  .physio-pre, .physio-eve {
+    margin-top: 0.6rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.7;
+    padding-left: calc(90px + 0.75rem + 0.75rem);
+  }
+  @media (max-width: 480px) {
+    .physio-pre, .physio-eve { padding-left: 0.75rem; }
+  }
+  .physio-pre { background: var(--purple-bg); color: #3A2060; }
+  .physio-eve { background: var(--purple-bg); color: #3A2060; }
+  .physio-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2px;
+    color: var(--purple);
+  }
+
+  /* ── PACES TABLE ── */
+  .paces-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+  }
+  .paces-table th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 400;
+    text-align: left;
+    padding: 0 0 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .paces-table td {
+    padding: 0.7rem 0.5rem 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 13.5px;
+    vertical-align: top;
+  }
+  .paces-table tr:last-child td { border-bottom: none; }
+  .paces-table .p-name { color: var(--ink-2); }
+  .paces-table .p-val  { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+  .paces-table .p-feel { font-size: 12px; color: var(--ink-3); }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-size: 11px;
+    font-family: var(--mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-title:first-child { margin-top: 0; }
+
+  /* ── PHYSIO PAGE ── */
+  .ex-block {
+    margin-bottom: 1.75rem;
+  }
+  .ex-block-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .ex-block-how {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+  .ex-timing {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-bottom: 1rem;
+  }
+
+  /* ── ALERT BOX ── */
+  .alert-box {
+    border: 1px solid #F0C8B0;
+    background: #FEF5F0;
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+    font-size: 13px;
+    color: #6A2A08;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+  .alert-box strong { color: #A03010; }
+
+  /* ── RACE DAY ── */
+  .race-segment {
+    display: flex;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 13.5px;
+    align-items: baseline;
+  }
+  .race-segment:last-child { border-bottom: none; }
+  .race-km {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+  .race-desc { color: var(--ink-2); line-height: 1.55; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    header { padding: 2rem 1.25rem 1.5rem; }
+    main { padding: 0 1.25rem 3rem; }
+    nav { padding: 0 1.25rem; }
+    .header-stats { gap: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-eyebrow">Marathon training plan</div>
+  <div class="header-main">
+    <h1>25 Oct<br>2026</h1>
+    <div class="countdown-block">
+      <div class="countdown-num" id="countdown">—</div>
+      <div class="countdown-label">days to go</div>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-item">
+      <div class="stat-val">4:30</div>
+      <div class="stat-lbl">Target finish</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">6:24</div>
+      <div class="stat-lbl">Min/km goal</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">9 weeks</div>
+      <div class="stat-lbl">Plan duration</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">42.2 km</div>
+      <div class="stat-lbl">Race distance</div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-wrap">
+  <nav>
+    <button class="nav-btn active" onclick="showTab('plan',this)">Plan</button>
+    <button class="nav-btn" onclick="showTab('paces',this)">Paces</button>
+    <button class="nav-btn" onclick="showTab('physio',this)">Physio</button>
+    <button class="nav-btn" onclick="showTab('raceday',this)">Race day</button>
+  </nav>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════════════ PLAN TAB -->
+<div id="plan" class="tab-panel active">
+  <div class="week-nav" id="weekNav"></div>
+  <div id="weekContent"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PACES TAB -->
+<div id="paces" class="tab-panel">
+  <div class="section-title">Your pace zones</div>
+  <table class="paces-table">
+    <thead>
+      <tr>
+        <th>Zone</th>
+        <th>Pace</th>
+        <th class="p-feel">How it feels</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="p-name">Recovery</td><td class="p-val">7:30–8:00 /km</td><td class="p-feel">Singing along to music</td></tr>
+      <tr><td class="p-name">Easy run</td><td class="p-val">6:45–7:15 /km</td><td class="p-feel">Full conversation, nose breathing</td></tr>
+      <tr><td class="p-name">Long run</td><td class="p-val">7:00–7:30 /km</td><td class="p-feel">Easy chat, could go forever</td></tr>
+      <tr><td class="p-name">Marathon goal pace</td><td class="p-val">6:20–6:24 /km</td><td class="p-feel">Focused, a few words only</td></tr>
+      <tr><td class="p-name">Tempo / threshold</td><td class="p-val">5:30–5:45 /km</td><td class="p-feel">Comfortably hard, short sentences</td></tr>
+      <tr><td class="p-name">Strides</td><td class="p-val">4:45–5:00 /km</td><td class="p-feel">20 sec bursts, then full walk recovery</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Why your easy pace must slow down</div>
+  <p style="font-size:13.5px;color:var(--ink-2);line-height:1.7;margin-bottom:1rem;">Your natural easy pace of 6:00/km is only 24 sec/km slower than your marathon goal. That gap is too small — every easy day is actually a moderate effort, leaving you under-recovered and grinding the IT band down. Running at 6:45–7:15 feels embarrassingly slow for the first week. That is exactly right.</p>
+
+  <div class="section-title">How to check pace on Strava without a watch</div>
+  <p style="font-size:13.5px;color:var(--ink-2);line-height:1.7;">Run with your phone in a pocket or running armband. Strava uses GPS to calculate pace automatically. After each run, check your average pace and the pace graph — easy runs should read 6:45–7:20, long runs 7:00–7:30, tempo segments clearly faster in the split view.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ PHYSIO TAB -->
+<div id="physio" class="tab-panel">
+
+  <div class="section-title">Before every run — 10 min</div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">Clamshells</div>
+    <div class="ex-timing">3 × 15 each side · resistance band around knees</div>
+    <div class="ex-block-how">Lie on your side, feet together, band around knees. Rotate the top knee upward like a clamshell opening, keeping feet touching. Lower slowly. This activates the glute medius — the root cause of IT band issues when weak.</div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">Side-lying hip abduction</div>
+    <div class="ex-timing">3 × 15 each side · no equipment needed</div>
+    <div class="ex-block-how">Lie on your side, bottom leg bent for balance, top leg straight. Lift the top leg to roughly 45° and lower slowly — do not let it drop. Strengthens hip abductors which stabilise the knee under load.</div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">Single-leg glute bridge</div>
+    <div class="ex-timing">3 × 12 each side · hold 2 sec at top</div>
+    <div class="ex-block-how">Lie on your back, one knee bent with foot flat on the floor, other leg straight and lifted. Drive through the planted heel to raise hips until your body forms a straight line. Prevents hip drop during the run, which is what loads the IT band.</div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">Hip flexor stretch — kneeling lunge</div>
+    <div class="ex-timing">60 sec each side</div>
+    <div class="ex-block-how">Kneel on one knee, other foot forward. Push hips forward gently until you feel a deep stretch in the front of the back hip. Keep upright. Tightness here tilts the pelvis and directly stresses the IT band.</div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">TFL and glute foam roll</div>
+    <div class="ex-timing">60 sec each side · foam roller</div>
+    <div class="ex-block-how">Roll the outer hip area — the TFL (just below the hip bone) and the glutes. Never roll directly on the IT band on the outer thigh itself — it is a tendon and rolling it causes irritation. Roll above and below only.</div>
+  </div>
+
+  <div class="section-title">Evening physio session — 15 min, on non-run days</div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">Monster walks</div>
+    <div class="ex-timing">3 sets × 15 steps each direction · band around ankles</div>
+    <div class="ex-block-how">Band around ankles, slight squat position. Walk sideways keeping toes forward and tension in the band. Builds hip stability under dynamic load — the kind needed at km 30.</div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">Step-downs (eccentric)</div>
+    <div class="ex-timing">3 × 12 each side · use a step or low stair</div>
+    <div class="ex-block-how">Stand on a step on one leg. Slowly lower the opposite heel toward the floor over 3 seconds. Return. The slow eccentric phase is what builds the protective quad and glute strength that shields the knee.</div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">IT band stretch — standing cross-leg</div>
+    <div class="ex-timing">3 × 45 sec each side</div>
+    <div class="ex-block-how">Stand, cross the affected (left) leg behind the other. Lean sideways away from the crossed leg — lean right to stretch the left IT band — until you feel a pull on the outer thigh. Hold steady.</div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">Pigeon pose</div>
+    <div class="ex-timing">90 sec each side · on a yoga mat</div>
+    <div class="ex-block-how">From all fours, bring one knee forward and angle it outward, extend the other leg straight back. Sink the hips toward the floor. This releases the piriformis and deep hip rotators that pull on the IT band when tight.</div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">Lateral band walks</div>
+    <div class="ex-timing">3 × 20 steps each direction · band around ankles</div>
+    <div class="ex-block-how">Band around ankles, feet hip-width, slight bend in knees. Step sideways keeping toes pointing forward. Builds hip abductor endurance — important because it is the fatigue at km 25+ that causes the IT band to flare.</div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-block-title">Single-leg calf raises</div>
+    <div class="ex-timing">3 × 15 each side · on a step edge</div>
+    <div class="ex-block-how">Stand on the ball of one foot on a step edge, heel hanging off. Lower the heel below the step level slowly, then rise up onto toes. Reduces lower leg fatigue on the run and protects the full knee chain.</div>
+  </div>
+
+  <div class="alert-box">
+    <strong>Tightness vs pain — know the line.</strong> Tightness or mild awareness of the left outer knee = continue running, slow your pace, monitor. A sharp, stabbing sensation on the outer knee — especially going downhill — = stop immediately. Walk home. Ice 15 min. Do the evening physio. Reassess the next day.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ RACE DAY TAB -->
+<div id="raceday" class="tab-panel">
+
+  <div class="section-title">Race morning timeline</div>
+
+  <div class="race-segment">
+    <div class="race-km">− 3 h</div>
+    <div class="race-desc">Wake up. Eat a familiar breakfast — oats, banana, coffee if that's your normal. Nothing new on race day.</div>
+  </div>
+  <div class="race-segment">
+    <div class="race-km">− 60 min</div>
+    <div class="race-desc">Full 10-min IT band physio routine. This is non-negotiable even on race morning — clamshells, hip abduction, glute bridge, hip flexor stretch, foam roll.</div>
+  </div>
+  <div class="race-segment">
+    <div class="race-km">− 20 min</div>
+    <div class="race-desc">Easy 5 min jog. Leg swings, hip circles, dynamic stretches. Find your corral.</div>
+  </div>
+  <div class="race-segment">
+    <div class="race-km">Gun</div>
+    <div class="race-desc">Let people go. You will feel strong. Resist.</div>
+  </div>
+
+  <div class="section-title" style="margin-top:2rem;">Race pacing strategy</div>
+
+  <div class="race-segment">
+    <div class="race-km">km 0–5</div>
+    <div class="race-desc"><span class="pace">6:35–6:45 /km</span> Deliberately slower than goal pace. Let people pass you. The adrenaline will make this feel too slow — that is correct.</div>
+  </div>
+  <div class="race-segment">
+    <div class="race-km">km 5–20</div>
+    <div class="race-desc"><span class="pace">6:20–6:30 /km</span> Settle into race pace. Find a rhythm. Keep hips level, activate glutes consciously. Short strides, high cadence — aim for ~175 steps/min.</div>
+  </div>
+  <div class="race-segment">
+    <div class="race-km">km 20–30</div>
+    <div class="race-desc"><span class="pace">6:20–6:30 /km</span> Hold form. Walk 90 sec every 5 km as planned — this costs you nothing and saves the knee. Take your second gel around km 22.</div>
+  </div>
+  <div class="race-segment">
+    <div class="race-km">km 30–35</div>
+    <div class="race-desc"><span class="pace">6:30–7:00 /km</span> IT band most likely to flare here. If pain arrives: slow to 7:00, walk 90 sec every 3 km. Walk the downhills. This costs 3 minutes — not 30. If taking ibuprofen, take it now with a gel.</div>
+  </div>
+  <div class="race-segment">
+    <div class="race-km">km 35–42.2</div>
+    <div class="race-desc">Run on feel. Walk what you need. Run the tangents — avoid cambered (tilted) roads which stress the outer knee. Finish strong.</div>
+  </div>
+
+  <div class="section-title" style="margin-top:2rem;">On pain killers</div>
+  <p style="font-size:13.5px;color:var(--ink-2);line-height:1.7;margin-bottom:1.5rem;">If you take ibuprofen mid-race, take it at km 30 with a gel or food — never on an empty stomach during hard effort. It masks pain signals, so stay conscious of form: keep cadence high, glutes active, hips level. You have already made this decision — execute it well and finish the race.</p>
+
+  <div class="section-title">After the finish</div>
+  <p style="font-size:13.5px;color:var(--ink-2);line-height:1.7;">Ice both knees immediately. Elevate legs. Eat and drink within 30 min. No running for a minimum of 2–3 weeks post-race.</p>
+
+</div>
+
+</main>
+
+<script>
+// ── COUNTDOWN
+function updateCountdown() {
+  const race = new Date('2026-10-25T00:00:00');
+  const now  = new Date();
+  const diff = Math.ceil((race - now) / 86400000);
+  document.getElementById('countdown').textContent = diff > 0 ? diff : '0';
+}
+updateCountdown();
+
+// ── TAB SWITCHING
+function showTab(name, el) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  el.classList.add('active');
+}
+
+// ── PLAN DATA
+const PHYSIO_PRE = `<div class="physio-pre"><div class="physio-label">Before run</div>Clamshells · Side-lying hip abduction · Single-leg glute bridge · Hip flexor stretch · TFL foam roll</div>`;
+const PHYSIO_EVE = `<div class="physio-eve"><div class="physio-label">Evening</div>Monster walks · Step-downs · IT band stretch · Pigeon pose · Lateral band walks · Single-leg calf raises</div>`;
+
+function p(s) { return `<span class="pace">${s}</span>`; }
+
+const weeks = [
+  { n:1, phase:'build', label:'Ease in', dates:'19–25 Aug', km:24,
+    days:[
+      { date:'Wed 20 Aug', type:'easy',   label:'Easy run — 6 km',
+        body:`${p('6:45–7:15 /km')} First run at the correct easy pace — deliberately slower than feels natural. Flat route. Check average pace on Strava after: aim for 6:45–7:20.`, physio:'pre+eve' },
+      { date:'Thu 21 Aug', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Fri 22 Aug', type:'rest',   label:'Rest', body:'Full rest.' },
+      { date:'Sat 23 Aug', type:'long',   label:'Long run — 10 km',
+        body:`${p('7:00–7:30 /km')} Easy and controlled throughout. Walk 1 min at km 5 as a planned break. If the left knee gives any sensation, slow to 7:45. Ice the knee after.`, physio:'pre' },
+      { date:'Sun 24 Aug', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min. Legs will be tired.', physio:'eve' },
+      { date:'Mon 25 Aug', type:'rest',   label:'Rest or easy bike', body:'Full rest or 30 min easy cycling.' },
+    ]
+  },
+  { n:2, phase:'build', label:'Find the rhythm', dates:'26 Aug–1 Sep', km:28,
+    days:[
+      { date:'Tue 26 Aug', type:'easy',   label:'Easy run — 8 km + strides',
+        body:`${p('6:45–7:15 /km')} then 4 × 20 sec strides at ${p('4:45–5:00 /km')} with 90 sec walk recovery after each. Strides wake up fast-twitch without fatigue.`, physio:'pre+eve' },
+      { date:'Wed 27 Aug', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Thu 28 Aug', type:'rest',   label:'Rest', body:'Full rest.' },
+      { date:'Fri 29 Aug', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Sat 30 Aug', type:'long',   label:'Long run — 14 km',
+        body:`${p('7:00–7:30 /km')} First proper long run. Walk 90 sec at km 7 as a planned break. About time on feet — do not speed up in the second half.`, physio:'pre' },
+      { date:'Sun 31 Aug', type:'rest',   label:'Rest or easy bike', body:'Optional 45 min easy cycling. Legs will be tired.' },
+      { date:'Mon 1 Sep',  type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+    ]
+  },
+  { n:3, phase:'build', label:'Add tempo', dates:'2–8 Sep', km:32,
+    days:[
+      { date:'Tue 2 Sep',  type:'tempo',  label:'Tempo run — 9 km',
+        body:`2 km warmup ${p('7:00 /km')} → 5 km tempo ${p('5:30–5:45 /km')} → 2 km cooldown ${p('7:00 /km')}. Tempo should feel comfortably hard — 2–3 words but not a full sentence. Shoulders relaxed.`, physio:'pre+eve' },
+      { date:'Wed 3 Sep',  type:'physio', label:'Physio session', body:'No run. Evening physio 15 min. Legs may be tight after tempo.', physio:'eve' },
+      { date:'Thu 4 Sep',  type:'rest',   label:'Rest', body:'Full rest.' },
+      { date:'Fri 5 Sep',  type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Sat 6 Sep',  type:'long',   label:'Long run — 16 km',
+        body:`${p('7:00–7:30 /km')} Planned walk breaks: 90 sec at km 8 and km 13. If knee tightens, slow to 7:45 — do not stop entirely. Foam roll TFL immediately after.`, physio:'pre' },
+      { date:'Sun 7 Sep',  type:'rest',   label:'Rest or easy bike', body:'Optional 60 min easy cycling.' },
+      { date:'Mon 8 Sep',  type:'easy',   label:'Easy run — 7 km',
+        body:`${p('6:45–7:15 /km')} Recovery run. If knee is tender from Saturday, drop to 5 km.`, physio:'pre+eve' },
+    ]
+  },
+  { n:4, phase:'peak', label:'First peak week', dates:'9–15 Sep', km:37,
+    days:[
+      { date:'Tue 9 Sep',  type:'easy',   label:'Easy run — 8 km + strides',
+        body:`${p('6:45–7:15 /km')} then 6 × 20 sec strides at ${p('4:45–5:00 /km')} with 90 sec walk recovery. Running economy work.`, physio:'pre+eve' },
+      { date:'Wed 10 Sep', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Thu 11 Sep', type:'tempo',  label:'Tempo run — 10 km',
+        body:`2 km warmup ${p('7:00 /km')} → 6 km tempo ${p('5:30–5:45 /km')} → 2 km cooldown ${p('7:00 /km')}. Hardest midweek session of the plan. Controlled breathing throughout.`, physio:'pre+eve' },
+      { date:'Fri 12 Sep', type:'physio', label:'Physio session', body:'No run. Critical rest before first 20 km tomorrow.', physio:'eve' },
+      { date:'Sat 13 Sep', type:'long',   label:'Long run — 20 km',
+        body:`${p('7:00–7:30 /km')} First 20 km. Walk 90 sec at km 5, 10, 15. Take a gel or banana at km 10. If knee flares after km 15, slow to 8:00 and walk every 3 km.`, physio:'pre' },
+      { date:'Sun 14 Sep', type:'rest',   label:'Full rest', body:'Mandatory. Foam roll TFL and glutes gently. Ice the knee if any soreness.' },
+      { date:'Mon 15 Sep', type:'easy',   label:'Easy run — 9 km',
+        body:`${p('6:45–7:15 /km')} Recovery run. If legs feel heavy, slow to 7:30. Drop to 6 km if the knee is at all tender.`, physio:'pre+eve' },
+    ]
+  },
+  { n:5, phase:'peak', label:'Big week', dates:'16–22 Sep', km:40,
+    days:[
+      { date:'Tue 16 Sep', type:'easy',   label:'Easy run — 9 km + strides',
+        body:`${p('6:45–7:15 /km')} then 6 × 20 sec strides at ${p('4:45–5:00 /km')}. You should feel strong this week — that is the fitness from weeks 1–4.`, physio:'pre+eve' },
+      { date:'Wed 17 Sep', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Thu 18 Sep', type:'tempo',  label:'Marathon pace run — 12 km',
+        body:`2 km warmup ${p('7:00 /km')} → 8 km at marathon goal pace ${p('6:20–6:24 /km')} → 2 km cooldown ${p('7:00 /km')}. First sustained effort at actual race pace. Should feel controlled and repeatable.`, physio:'pre+eve' },
+      { date:'Fri 19 Sep', type:'physio', label:'Physio session', body:'No run. Critical rest before the longest run of the plan.', physio:'eve' },
+      { date:'Sat 20 Sep', type:'long',   label:'Long run — 28–30 km ★',
+        body:`${p('7:00–7:30 /km')} <strong>Most important session of the entire plan.</strong> Walk 90 sec every 5 km from the very start — structural, not weakness. Gel at km 12 and km 22. If knee tightens after km 20, slow to 8:00 and walk every 3 km. Complete the distance even if slow. Only cut short if there is sharp pain.`, physio:'pre' },
+      { date:'Sun 21 Sep', type:'rest',   label:'Full rest', body:'Mandatory. Legs will be cooked. Gentle walk only. Foam roll. Eat and sleep well.' },
+      { date:'Mon 22 Sep', type:'easy',   label:'Easy run — 9 km',
+        body:`${p('6:45–7:15 /km')} You may feel flat — completely normal after 28–30 km. Keep it easy. Drop to 5 km if knee is tender.`, physio:'pre+eve' },
+    ]
+  },
+  { n:6, phase:'peak', label:'Consolidate', dates:'23–29 Sep', km:34,
+    days:[
+      { date:'Tue 23 Sep', type:'easy',   label:'Easy run — 8 km + strides',
+        body:`${p('6:45–7:15 /km')} then 4 × 20 sec strides at ${p('4:45–5:00 /km')}. Lighter than last week.`, physio:'pre+eve' },
+      { date:'Wed 24 Sep', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Thu 25 Sep', type:'tempo',  label:'Tempo run — 10 km',
+        body:`2 km warmup ${p('7:00 /km')} → 6 km tempo ${p('5:30–5:45 /km')} → 2 km cooldown ${p('7:00 /km')}. Last serious tempo session. Should feel familiar by now.`, physio:'pre+eve' },
+      { date:'Fri 26 Sep', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Sat 27 Sep', type:'long',   label:'Long run — 22 km',
+        body:`${p('7:00–7:30 /km')} Shorter than week 5 — do not try to match 28 km. Walk breaks every 5 km. Practice gel timing at km 11.`, physio:'pre' },
+      { date:'Sun 28 Sep', type:'rest',   label:'Rest or easy bike', body:'Optional 45 min easy cycling.' },
+      { date:'Mon 29 Sep', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+    ]
+  },
+  { n:7, phase:'taper', label:'Taper begins', dates:'30 Sep–6 Oct', km:24,
+    days:[
+      { date:'Tue 30 Sep', type:'easy',   label:'Easy run — 7 km + strides',
+        body:`${p('6:45–7:15 /km')} then 4 × 20 sec strides. Volume drops from here. Fitness is banked — taper is about arriving fresh.`, physio:'pre+eve' },
+      { date:'Wed 1 Oct',  type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Thu 2 Oct',  type:'tempo',  label:'Race pace segments — 8 km',
+        body:`2 km warmup ${p('7:00 /km')} → 4 × 1 km at ${p('6:20–6:24 /km')} with 2 min easy jog between → 2 km cooldown. Keeps the legs sharp without fatigue.`, physio:'pre+eve' },
+      { date:'Fri 3 Oct',  type:'rest',   label:'Rest', body:'Full rest.' },
+      { date:'Sat 4 Oct',  type:'long',   label:'Long run — 16 km',
+        body:`${p('7:00–7:30 /km')} Last long run. Keep it slow and comfortable. If it feels hard, that is taper madness — not fitness loss.`, physio:'pre' },
+      { date:'Sun 5 Oct',  type:'rest',   label:'Rest', body:'Full rest. Foam roll glutes.' },
+      { date:'Mon 6 Oct',  type:'easy',   label:'Easy run — 5 km',
+        body:`${p('6:45–7:15 /km')} Short and easy. Just move the legs.`, physio:'pre+eve' },
+    ]
+  },
+  { n:8, phase:'taper', label:'Deep taper', dates:'7–13 Oct', km:16,
+    days:[
+      { date:'Tue 7 Oct',  type:'easy',   label:'Easy run — 6 km + strides',
+        body:`${p('6:45–7:15 /km')} then 4 × 20 sec strides. You will feel restless and like fitness is fading. It is not — trust the taper.`, physio:'pre+eve' },
+      { date:'Wed 8 Oct',  type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Thu 9 Oct',  type:'rest',   label:'Rest', body:'Full rest.' },
+      { date:'Fri 10 Oct', type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Sat 11 Oct', type:'long',   label:'Easy run — 8 km with pace check',
+        body:`${p('6:45–7:15 /km')} with 2 × 2 km at race pace ${p('6:20–6:24 /km')} in the middle. Not a long run — a longer easy run to shake out the legs.`, physio:'pre' },
+      { date:'Sun 12 Oct', type:'rest',   label:'Rest', body:'Full rest. Stay off your feet.' },
+      { date:'Mon 13 Oct', type:'easy',   label:'Easy run — 5 km',
+        body:`${p('6:45–7:15 /km')} Short and easy. Last meaningful volume before race week.`, physio:'pre+eve' },
+    ]
+  },
+  { n:9, phase:'race', label:'Race week', dates:'14–25 Oct', km:11,
+    days:[
+      { date:'Tue 14 Oct',        type:'easy',   label:'Easy run — 5 km',
+        body:`${p('6:45–7:15 /km')} Legs should feel springy. Resist all urge to run faster.`, physio:'pre+eve' },
+      { date:'Wed 15 Oct',        type:'physio', label:'Physio session', body:'No run. Evening physio 15 min.', physio:'eve' },
+      { date:'Thu 16 Oct',        type:'tempo',  label:'Race pace tune-up — 5 km',
+        body:`1 km warmup → 3 × 1 km at ${p('6:20–6:24 /km')} with 90 sec easy jog → 1 km cooldown. Just to feel the rhythm. Should feel easy at this point.`, physio:'pre' },
+      { date:'Fri 17 Oct',        type:'rest',   label:'Rest', body:'Full rest. Lay out all race kit. Check weather forecast.' },
+      { date:'Sat 18 Oct',        type:'easy',   label:'Shakeout run — 3 km',
+        body:`${p('7:00 /km')} Literally just shake out the legs. 3 km and done.`, physio:'pre' },
+      { date:'Sun–Tue 19–21 Oct', type:'rest',   label:'Rest', body:'Stay off your feet as much as possible. Continue the IT band morning routine every day even without running.' },
+      { date:'Wed 22 Oct',        type:'rest',   label:'Rest + carb-load begins', body:'Carb-loading starts tonight. Pasta, rice, oats, bread — prioritise carbs at every meal through Friday. Reduce fibre and heavy fats.' },
+      { date:'Thu 23 Oct',        type:'rest',   label:'Rest + carb-load', body:'Full rest. Eat well. Sleep as much as you can.' },
+      { date:'Fri 24 Oct',        type:'rest',   label:'Rest + carb-load', body:'Full rest. Big carb lunch, lighter dinner. Early to bed. All kit ready.' },
+      { date:'Sat 25 Oct',        type:'race',   label:'MARATHON — Race day',
+        body:`<strong>−60 min:</strong> Full IT band physio routine. Non-negotiable.<br>
+<strong>−20 min:</strong> Easy 5 min jog + dynamic leg swings.<br><br>
+<strong>km 0–5:</strong> ${p('6:35–6:45 /km')} — deliberately slow, let people pass.<br>
+<strong>km 5–20:</strong> ${p('6:20–6:30 /km')} — settle into pace, high cadence, level hips.<br>
+<strong>km 20–30:</strong> ${p('6:20–6:30 /km')} — hold form, walk 90 sec every 5 km.<br>
+<strong>km 30–35:</strong> ${p('6:30–7:00 /km')} — IT band most likely to flare. Walk breaks if needed. Ibuprofen at km 30 with a gel if using it.<br>
+<strong>km 35–42.2:</strong> Run on feel. Walk downhills. Finish.`, physio:'pre' },
+    ]
+  },
+];
+
+const typeTagMap = {
+  easy:'easy', long:'long run', tempo:'tempo',
+  physio:'physio', rest:'rest', race:'race day'
+};
+
+function renderWeek(idx) {
+  const w = weeks[idx];
+  const phaseLabel = { build:'Build', peak:'Peak', taper:'Taper', race:'Race' }[w.phase];
+  let html = `<div class="week-header">
+    <div>
+      <span class="week-title">Week ${w.n} — ${w.label}</span>
+      <span class="phase-tag phase-${w.phase}">${phaseLabel}</span>
+    </div>
+    <div class="week-meta">${w.dates} &middot; ~${w.km} km</div>
+  </div>`;
+
+  w.days.forEach(d => {
+    let physioHTML = '';
+    if (d.physio === 'pre+eve') physioHTML = PHYSIO_PRE + PHYSIO_EVE;
+    else if (d.physio === 'pre') physioHTML = PHYSIO_PRE;
+    else if (d.physio === 'eve') physioHTML = PHYSIO_EVE;
+
+    html += `<div class="day-card type-${d.type}">
+      <div class="day-top">
+        <div class="day-date">${d.date}</div>
+        <div class="day-label">${d.label}</div>
+        <span class="type-tag tag-${d.type}">${typeTagMap[d.type]}</span>
+      </div>
+      <div class="day-body">${d.body}</div>
+      ${physioHTML}
+    </div>`;
+  });
+
+  document.getElementById('weekContent').innerHTML = html;
+}
+
+function buildWeekNav() {
+  const nav = document.getElementById('weekNav');
+  const labels = ['W1','W2','W3','W4','W5 ★','W6','W7','W8','Race week'];
+  labels.forEach((l, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'week-btn' + (i === 0 ? ' active' : '');
+    btn.textContent = l;
+    btn.onclick = () => {
+      document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderWeek(i);
+    };
+    nav.appendChild(btn);
+  });
+  renderWeek(0);
+}
+
+buildWeekNav();
+
+// ── DEEP LINK via URL hash e.g. #w1, #w2, #w5-sat
+// Supported hashes: #w1 through #w9, #w9-race
+function handleHash() {
+  const hash = window.location.hash.replace('#', '');
+  if (!hash) return;
+
+  // Map hash to week index
+  const weekMatch = hash.match(/^w(\d)$/);
+  const dayMatch  = hash.match(/^w(\d)-(.+)$/);
+  const wIdx = weekMatch ? parseInt(weekMatch[1]) - 1
+             : dayMatch  ? parseInt(dayMatch[1])  - 1
+             : null;
+
+  if (wIdx === null || wIdx < 0 || wIdx > 8) return;
+
+  // Switch to plan tab
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('plan').classList.add('active');
+  document.querySelector('.nav-btn').classList.add('active');
+
+  // Switch to correct week
+  const btns = document.querySelectorAll('.week-btn');
+  btns.forEach(b => b.classList.remove('active'));
+  btns[wIdx].classList.add('active');
+  renderWeek(wIdx);
+
+  // If a specific day is targeted, highlight it
+  if (dayMatch) {
+    const dayKey = dayMatch[2]; // e.g. "sat", "tue", "thu"
+    setTimeout(() => {
+      const cards = document.querySelectorAll('.day-card');
+      cards.forEach(card => {
+        const dateEl = card.querySelector('.day-date');
+        if (dateEl && dateEl.textContent.toLowerCase().includes(dayKey)) {
+          card.style.outline = '2px solid var(--green)';
+          card.style.outlineOffset = '2px';
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    }, 50);
+  } else {
+    // Just scroll to top of content
+    setTimeout(() => {
+      document.getElementById('weekContent').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+}
+
+handleHash();
+window.addEventListener('hashchange', handleHash);
+</script>
+</body>
+</html>
