@@ -1,0 +1,497 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Marathon Training Plan//25 Oct 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Marathon Training — 25 Oct 2026
+X-WR-CALDESC:9-week marathon training plan with IT band physio protocol
+X-WR-TIMEZONE:Europe/Zurich
+BEGIN:VTIMEZONE
+TZID:Europe/Zurich
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=3
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10
+END:STANDARD
+END:VTIMEZONE
+
+BEGIN:VEVENT
+UID:w1-wed-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20260820T070000
+DTEND;TZID=Europe/Zurich:20260820T073000
+SUMMARY:🟢 Easy run — 6 km
+DESCRIPTION:Pace: 6:45–7:15 /km\n\nFirst run at the correct easy pace — deliberately slower than feels natural. Flat route. Check average pace on Strava after: aim for 6:45–7:20.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w1-thu-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260821T200000
+DTEND;TZID=Europe/Zurich:20260821T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w1-sat-long@marathon2026
+DTSTART;TZID=Europe/Zurich:20260822T080000
+DTEND;TZID=Europe/Zurich:20260822T091500
+SUMMARY:🔵 Long run — 10 km
+DESCRIPTION:Pace: 7:00–7:30 /km\n\nEasy and controlled throughout. Walk 1 min at km 5 as a planned break. If the left knee gives any sensation, slow to 7:45. Ice the knee after.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Long
+COLOR:BLUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w1-sun-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260823T200000
+DTEND;TZID=Europe/Zurich:20260823T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today. Legs will be tired from yesterday's long run.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w2-tue-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20260825T070000
+DTEND;TZID=Europe/Zurich:20260825T080000
+SUMMARY:🟢 Easy run — 8 km + strides
+DESCRIPTION:Pace: 6:45–7:15 /km then 4×20 sec strides at 4:45–5:00 /km with 90 sec walk recovery after each.\n\nStrides wake up fast-twitch without fatigue.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w2-wed-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260826T200000
+DTEND;TZID=Europe/Zurich:20260826T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w2-fri-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260828T200000
+DTEND;TZID=Europe/Zurich:20260828T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w2-sat-long@marathon2026
+DTSTART;TZID=Europe/Zurich:20260829T080000
+DTEND;TZID=Europe/Zurich:20260829T095000
+SUMMARY:🔵 Long run — 14 km
+DESCRIPTION:Pace: 7:00–7:30 /km\n\nFirst proper long run. Walk 90 sec at km 7 as a planned break. About time on feet — do not speed up in the second half.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Long
+COLOR:BLUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w2-mon-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260831T200000
+DTEND;TZID=Europe/Zurich:20260831T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w3-tue-tempo@marathon2026
+DTSTART;TZID=Europe/Zurich:20260901T070000
+DTEND;TZID=Europe/Zurich:20260901T080000
+SUMMARY:🟠 Tempo run — 9 km
+DESCRIPTION:2 km warmup at 7:00 /km → 5 km tempo at 5:30–5:45 /km → 2 km cooldown at 7:00 /km\n\nTempo should feel comfortably hard — 2–3 words but not a full sentence. Shoulders relaxed.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Tempo
+COLOR:ORANGE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w3-wed-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260902T200000
+DTEND;TZID=Europe/Zurich:20260902T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run. Legs may be tight after tempo.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w3-fri-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260904T200000
+DTEND;TZID=Europe/Zurich:20260904T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w3-sat-long@marathon2026
+DTSTART;TZID=Europe/Zurich:20260905T080000
+DTEND;TZID=Europe/Zurich:20260905T100000
+SUMMARY:🔵 Long run — 16 km
+DESCRIPTION:Pace: 7:00–7:30 /km\n\nPlanned walk breaks: 90 sec at km 8 and km 13. If knee tightens, slow to 7:45 — do not stop entirely. Foam roll TFL immediately after.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Long
+COLOR:BLUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w3-mon-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20260907T070000
+DTEND;TZID=Europe/Zurich:20260907T074500
+SUMMARY:🟢 Easy run — 7 km
+DESCRIPTION:Pace: 6:45–7:15 /km\n\nRecovery run. If knee is tender from Saturday, drop to 5 km.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w4-tue-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20260908T070000
+DTEND;TZID=Europe/Zurich:20260908T080000
+SUMMARY:🟢 Easy run — 8 km + strides
+DESCRIPTION:Pace: 6:45–7:15 /km then 6×20 sec strides at 4:45–5:00 /km with 90 sec walk recovery.\n\nRunning economy work.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w4-wed-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260909T200000
+DTEND;TZID=Europe/Zurich:20260909T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w4-thu-tempo@marathon2026
+DTSTART;TZID=Europe/Zurich:20260910T070000
+DTEND;TZID=Europe/Zurich:20260910T081000
+SUMMARY:🟠 Tempo run — 10 km
+DESCRIPTION:2 km warmup at 7:00 /km → 6 km tempo at 5:30–5:45 /km → 2 km cooldown at 7:00 /km\n\nHardest midweek session of the plan. Controlled breathing throughout.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Tempo
+COLOR:ORANGE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w4-fri-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260911T200000
+DTEND;TZID=Europe/Zurich:20260911T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:Critical rest before first 20 km tomorrow.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w4-sat-long@marathon2026
+DTSTART;TZID=Europe/Zurich:20260912T080000
+DTEND;TZID=Europe/Zurich:20260912T103000
+SUMMARY:🔵 Long run — 20 km
+DESCRIPTION:Pace: 7:00–7:30 /km\n\nFirst 20 km. Walk 90 sec at km 5, 10, 15. Take a gel or banana at km 10. If knee flares after km 15, slow to 8:00 and walk every 3 km.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Long
+COLOR:BLUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w4-mon-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20260914T070000
+DTEND;TZID=Europe/Zurich:20260914T081500
+SUMMARY:🟢 Easy run — 9 km
+DESCRIPTION:Pace: 6:45–7:15 /km\n\nRecovery run. If legs feel heavy, slow to 7:30. Drop to 6 km if the knee is at all tender.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w5-tue-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20260915T070000
+DTEND;TZID=Europe/Zurich:20260915T081500
+SUMMARY:🟢 Easy run — 9 km + strides
+DESCRIPTION:Pace: 6:45–7:15 /km then 6×20 sec strides at 4:45–5:00 /km.\n\nYou should feel strong this week — that is the fitness from weeks 1–4.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w5-wed-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260916T200000
+DTEND;TZID=Europe/Zurich:20260916T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w5-thu-tempo@marathon2026
+DTSTART;TZID=Europe/Zurich:20260917T070000
+DTEND;TZID=Europe/Zurich:20260917T082500
+SUMMARY:🟠 Marathon pace run — 12 km
+DESCRIPTION:2 km warmup at 7:00 /km → 8 km at marathon goal pace 6:20–6:24 /km → 2 km cooldown at 7:00 /km\n\nFirst sustained effort at actual race pace. Should feel controlled and repeatable — not a sprint.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Tempo
+COLOR:ORANGE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w5-fri-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260918T200000
+DTEND;TZID=Europe/Zurich:20260918T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:Critical rest before the longest run of the plan.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w5-sat-long@marathon2026
+DTSTART;TZID=Europe/Zurich:20260919T080000
+DTEND;TZID=Europe/Zurich:20260919T115000
+SUMMARY:🔵 Long run — 28–30 km ★
+DESCRIPTION:Pace: 7:00–7:30 /km\n\n★ MOST IMPORTANT SESSION OF THE ENTIRE PLAN ★\n\nWalk 90 sec every 5 km from the very start — structural, not weakness. Gel at km 12 and km 22. If knee tightens after km 20, slow to 8:00 and walk every 3 km. Complete the distance even if slow. Only cut short if there is sharp pain.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Long
+COLOR:BLUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w5-mon-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20260921T070000
+DTEND;TZID=Europe/Zurich:20260921T081500
+SUMMARY:🟢 Easy run — 9 km
+DESCRIPTION:Pace: 6:45–7:15 /km\n\nYou may feel flat — completely normal after 28–30 km. Keep it easy. Drop to 5 km if knee is tender.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w6-tue-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20260922T070000
+DTEND;TZID=Europe/Zurich:20260922T080000
+SUMMARY:🟢 Easy run — 8 km + strides
+DESCRIPTION:Pace: 6:45–7:15 /km then 4×20 sec strides at 4:45–5:00 /km. Lighter than last week.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w6-wed-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260923T200000
+DTEND;TZID=Europe/Zurich:20260923T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w6-thu-tempo@marathon2026
+DTSTART;TZID=Europe/Zurich:20260924T070000
+DTEND;TZID=Europe/Zurich:20260924T081000
+SUMMARY:🟠 Tempo run — 10 km
+DESCRIPTION:2 km warmup at 7:00 /km → 6 km tempo at 5:30–5:45 /km → 2 km cooldown at 7:00 /km\n\nLast serious tempo session. Should feel familiar by now.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Tempo
+COLOR:ORANGE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w6-fri-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260925T200000
+DTEND;TZID=Europe/Zurich:20260925T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w6-sat-long@marathon2026
+DTSTART;TZID=Europe/Zurich:20260926T080000
+DTEND;TZID=Europe/Zurich:20260926T105000
+SUMMARY:🔵 Long run — 22 km
+DESCRIPTION:Pace: 7:00–7:30 /km\n\nShorter than week 5 — do not try to match 28 km. Walk breaks every 5 km. Practice gel timing at km 11.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Long
+COLOR:BLUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w6-mon-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260928T200000
+DTEND;TZID=Europe/Zurich:20260928T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w7-tue-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20260929T070000
+DTEND;TZID=Europe/Zurich:20260929T074500
+SUMMARY:🟢 Easy run — 7 km + strides
+DESCRIPTION:Pace: 6:45–7:15 /km then 4×20 sec strides. Volume drops from here. Fitness is banked — taper is about arriving fresh.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w7-wed-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20260930T200000
+DTEND;TZID=Europe/Zurich:20260930T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w7-thu-tempo@marathon2026
+DTSTART;TZID=Europe/Zurich:20261001T070000
+DTEND;TZID=Europe/Zurich:20261001T080000
+SUMMARY:🟠 Race pace segments — 8 km
+DESCRIPTION:2 km warmup at 7:00 /km → 4×1 km at 6:20–6:24 /km with 2 min easy jog between → 2 km cooldown\n\nKeeps the legs sharp without fatigue.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Tempo
+COLOR:ORANGE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w7-sat-long@marathon2026
+DTSTART;TZID=Europe/Zurich:20261003T080000
+DTEND;TZID=Europe/Zurich:20261003T100000
+SUMMARY:🔵 Long run — 16 km
+DESCRIPTION:Pace: 7:00–7:30 /km\n\nLast long run. Keep it slow and comfortable. If it feels hard, that is taper madness — not fitness loss.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Long
+COLOR:BLUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w7-mon-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20261005T070000
+DTEND;TZID=Europe/Zurich:20261005T073000
+SUMMARY:🟢 Easy run — 5 km
+DESCRIPTION:Pace: 6:45–7:15 /km\n\nShort and easy. Just move the legs.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w8-tue-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20261006T070000
+DTEND;TZID=Europe/Zurich:20261006T073500
+SUMMARY:🟢 Easy run — 6 km + strides
+DESCRIPTION:Pace: 6:45–7:15 /km then 4×20 sec strides. You will feel restless and like fitness is fading. It is not — trust the taper.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w8-wed-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20261007T200000
+DTEND;TZID=Europe/Zurich:20261007T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w8-fri-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20261009T200000
+DTEND;TZID=Europe/Zurich:20261009T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w8-sat-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20261010T080000
+DTEND;TZID=Europe/Zurich:20261010T090000
+SUMMARY:🟢 Easy run — 8 km with pace check
+DESCRIPTION:Pace: 6:45–7:15 /km with 2×2 km at race pace 6:20–6:24 /km in the middle.\n\nNot a long run — a longer easy run to shake out the legs.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w8-mon-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20261012T070000
+DTEND;TZID=Europe/Zurich:20261012T073000
+SUMMARY:🟢 Easy run — 5 km
+DESCRIPTION:Pace: 6:45–7:15 /km\n\nShort and easy. Last meaningful volume before race week.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w9-tue-run@marathon2026
+DTSTART;TZID=Europe/Zurich:20261013T070000
+DTEND;TZID=Europe/Zurich:20261013T073000
+SUMMARY:🟢 Easy run — 5 km
+DESCRIPTION:Pace: 6:45–7:15 /km\n\nLegs should feel springy. Resist all urge to run faster.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w9-wed-physio@marathon2026
+DTSTART;TZID=Europe/Zurich:20261014T200000
+DTEND;TZID=Europe/Zurich:20261014T201500
+SUMMARY:💜 Physio session — 15 min
+DESCRIPTION:No run today.\n\n--- EVENING (15 min) ---\n• Monster walks 3×15 steps\n• Step-downs 3×12 each side\n• IT band stretch 3×45 sec each side\n• Pigeon pose 90 sec each side\n• Lateral band walks 3×20 steps\n• Single-leg calf raises 3×15 each side
+CATEGORIES:Physio
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w9-thu-tempo@marathon2026
+DTSTART;TZID=Europe/Zurich:20261015T070000
+DTEND;TZID=Europe/Zurich:20261015T073000
+SUMMARY:🟠 Race pace tune-up — 5 km
+DESCRIPTION:1 km warmup → 3×1 km at race pace 6:20–6:24 /km with 90 sec easy jog → 1 km cooldown\n\nJust to feel the rhythm. Should feel easy at this point.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Tempo
+COLOR:ORANGE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w9-sat-shakeout@marathon2026
+DTSTART;TZID=Europe/Zurich:20261017T080000
+DTEND;TZID=Europe/Zurich:20261017T082000
+SUMMARY:🟢 Shakeout run — 3 km
+DESCRIPTION:Pace: 7:00 /km\n\nLiterally just shake out the legs. 3 km and done.\n\n--- BEFORE RUN (10 min) ---\n• Clamshells 3×15 each side\n• Side-lying hip abduction 3×15 each side\n• Single-leg glute bridge 3×12 each side\n• Hip flexor stretch 60 sec each side\n• TFL foam roll 60 sec each side
+CATEGORIES:Run,Easy
+COLOR:GREEN
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w9-wed-carbload@marathon2026
+DTSTART;TZID=Europe/Zurich:20261021T000000
+DTEND;TZID=Europe/Zurich:20261021T010000
+SUMMARY:🍝 Carb-load begins
+DESCRIPTION:From today through Friday: pasta, rice, oats, bread — prioritise carbs at every meal. Reduce fibre and heavy fats. Continue IT band morning routine every day.
+CATEGORIES:Nutrition
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w9-fri-prep@marathon2026
+DTSTART;TZID=Europe/Zurich:20261023T000000
+DTEND;TZID=Europe/Zurich:20261023T010000
+SUMMARY:🎽 Race kit check + early bed
+DESCRIPTION:Full rest. Last big carb meal at lunch, lighter dinner. Lay out ALL race kit tonight:\n• Race shoes\n• Race bib (pick up if not done)\n• Shorts, socks, top\n• Gels (2 minimum)\n• Ibuprofen if using\n• Vaseline / anti-chafe\n\nEarly to bed. Do morning IT band physio routine.
+CATEGORIES:Prep
+END:VEVENT
+
+BEGIN:VEVENT
+UID:w9-race@marathon2026
+DTSTART;TZID=Europe/Zurich:20261025T080000
+DTEND;TZID=Europe/Zurich:20261025T124500
+SUMMARY:🏅 MARATHON — 25 Oct 2026
+DESCRIPTION:TARGET: 4:30 finish (6:24 /km)\n\n--- RACE MORNING ---\n−3 h: Wake up, familiar breakfast (oats, banana, coffee)\n−60 min: Full IT band physio routine — non-negotiable\n−20 min: Easy 5 min jog + dynamic leg swings\n\n--- PACING STRATEGY ---\nkm 0–5:   6:35–6:45 /km — deliberately slow, let people pass\nkm 5–20:  6:20–6:30 /km — settle into pace, high cadence\nkm 20–30: 6:20–6:30 /km — hold form, walk 90 sec every 5 km\nkm 30–35: 6:30–7:00 /km — IT band danger zone, walk if needed\nkm 35–42: Run on feel. Walk downhills. Finish.\n\nIf taking ibuprofen: at km 30 with a gel, not on empty stomach.
+CATEGORIES:Race
+COLOR:YELLOW
+END:VEVENT
+
+END:VCALENDAR
